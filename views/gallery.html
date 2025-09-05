@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Gallery Page Styles */
+        .gallery-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .gallery-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .gallery-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .gallery-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 1px solid #ecf0f1;
+            color: #7f8c8d;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+            position: relative;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 1.5rem;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-info {
+            padding: 1.5rem;
+        }
+        
+        .gallery-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+        
+        .gallery-date {
+            font-weight: 500;
+        }
+        
+        .gallery-type {
+            background: #ecf0f1;
+            color: #7f8c8d;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .gallery-description {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .no-gallery {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .no-gallery h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .no-gallery p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .follow-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .follow-btn:hover {
+            background: #34495e;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-filters {
+                justify-content: center;
+            }
+            
+            .gallery-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/music" class="nav-link">Music</a></li>
+                <li><a href="/shows" class="nav-link">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link active">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="gallery-hero">
+            <div class="gallery-hero-content">
+                <h1 class="gallery-title">Gallery</h1>
+                <p class="gallery-subtitle">
+                    Visual moments from the journey—behind the scenes,<br>
+                    live performances, and creative inspirations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <!-- Filter buttons (for future use) -->
+                <div class="gallery-filters">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Studio</button>
+                    <button class="filter-btn">Live</button>
+                    <button class="filter-btn">Behind the Scenes</button>
+                    <button class="filter-btn">Artwork</button>
+                </div>
+                
+                <!-- Currently no gallery items -->
+                <div class="no-gallery">
+                    <h3>Gallery Coming Soon</h3>
+                    <p>I'm curating a collection of visual moments from the studio, live performances, 
+                    and behind-the-scenes glimpses into the creative process. Follow along on social media 
+                    for the latest updates and sneak peeks.</p>
+                    
+                    <a href="/contact#social" class="follow-btn">Follow for Updates</a>
+                </div>
+                
+                <!-- Example of what gallery items would look like -->
+                <!--
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="image-placeholder">
+                            Studio Session
+                            <div class="gallery-overlay">🔍</div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Recording "Falling"</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">June 2024</span>
+                                <span class="gallery-type">Studio</span>
+                            </div>
+                            <p class="gallery-description">
+                                Late night recording session capturing the raw emotion of the debut single.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="image-placeholder">
+                            Album Artwork
+                            <div class="gallery-overlay">🔍</div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>"Falling" Cover Art</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">May 2024</span>
+                                <span class="gallery-type">Artwork</span>
+                            </div>
+                            <p class="gallery-description">
+                                The creative process behind the visual identity of the debut single.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="image-placeholder">
+                            Songwriting Setup
+                            <div class="gallery-overlay">🔍</div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Home Studio Setup</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">April 2024</span>
+                                <span class="gallery-type">Behind the Scenes</span>
+                            </div>
+                            <p class="gallery-description">
+                                Where the magic happens - the intimate space where songs are born.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <p>© 2025 A Moody Place. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

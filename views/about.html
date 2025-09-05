@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* About Page Styles */
+        .about-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .about-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .about-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .about-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .about-text {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            color: #7f8c8d;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-image {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .image-placeholder {
+            text-align: center;
+            color: #95a5a6;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+            border-radius: 8px;
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .values-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            margin-bottom: 4rem;
+        }
+        
+        .values-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ecf0f1;
+        }
+        
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .value-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+        
+        .value-item p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .connect-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            text-align: center;
+        }
+        
+        .connect-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .connect-text {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            background: #34495e;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-btn {
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link active">About</a></li>
+                <li><a href="/music" class="nav-link">Music</a></li>
+                <li><a href="/shows" class="nav-link">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1 class="about-title">About</h1>
+                <p class="about-subtitle">
+                    The story behind A Moody Place and the journey<br>
+                    of creating music that connects with the soul.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-section">
+            <div class="about-container">
+                <!-- Main About Content -->
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>The Artist</h3>
+                        <p>
+                            Mood is an artist, producer, and creative visionary reshaping the sound of modern music. 
+                            Originally from Rochester, NY and now based in Los Angeles, Mood blends raw emotion with 
+                            immersive sonics to craft records that resonate beyond the moment. With a genre-fluid 
+                            approach and cinematic production style, every track reflects a deep commitment to 
+                            storytelling and sonic clarity.
+                        </p>
+                        <p>
+                            In addition to building a distinct solo catalog, Mood writes for other artists across 
+                            the industry—bringing the same level of depth, intention, and creative control to every 
+                            collaboration.
+                        </p>
+                        <p>
+                            From concept to final mix, Mood is hands-on in every step of the process—producing, writing, 
+                            and shaping each release with surgical precision and instinctive creativity.
+                        </p>
+                        <p>
+                            Recognized early by key players in the industry, Mood has already drawn attention from 
+                            award-winning engineers and rising collaborators, all aligning with the artist's singular vision.
+                        </p>
+                        <p>
+                            With each release, the momentum grows—and Mood isn't just arriving, but building toward 
+                            a breakout moment that feels inevitable.
+                        </p>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="/images/mood_the_artist.jpg" alt="Mood, the artist behind A Moody Place" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
+                
+                <!-- Values Section -->
+                <div class="values-section">
+                    <h3 class="values-title">Creative Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <span class="value-icon">🎵</span>
+                            <h4>Authenticity</h4>
+                            <p>Every song comes from a genuine place of emotion and experience, 
+                            never manufactured or forced.</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">🤝</span>
+                            <h4>Connection</h4>
+                            <p>Music's power lies in its ability to make us feel less alone 
+                            in our experiences.</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">🌱</span>
+                            <h4>Growth</h4>
+                            <p>Each song is part of an ongoing journey of personal and 
+                            artistic evolution.</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">🕯️</span>
+                            <h4>Intimacy</h4>
+                            <p>Creating music that feels like a conversation between 
+                            close friends in a quiet room.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Connect Section -->
+                <div class="connect-section">
+                    <h3 class="connect-title">Let's Connect</h3>
+                    <p class="connect-text">
+                        I'd love to hear how these songs resonate with you. Follow along on social media 
+                        for behind-the-scenes glimpses into the creative process, or reach out directly 
+                        to share your thoughts and stories.
+                    </p>
+                    <div class="social-links">
+                        <a href="/contact" class="social-btn">
+                            ✉️ Get in Touch
+                        </a>
+                        <a href="#" class="social-btn">
+                            📱 Follow on Instagram
+                        </a>
+                        <a href="#" class="social-btn">
+                            🎵 Listen on Spotify
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <p>© 2025 A Moody Place. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

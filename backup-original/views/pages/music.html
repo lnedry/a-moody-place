@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Music by Mood - Listen to introspective songs, emotional melodies, and authentic storytelling. Stream on Spotify, Apple Music, and YouTube.">
+    <title>Music - A Moody Place</title>
+    <link rel="canonical" href="https://a-moody-place.com/music">
+    
+    <!-- Page-specific styles for music -->
+    <style>
+        .music-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            padding: var(--spacing-5xl) 0 var(--spacing-4xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .music-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/images/music-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .music-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .music-hero-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+            line-height: var(--line-height-tight);
+        }
+        
+        .music-hero-subtitle {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.9;
+        }
+        
+        .global-player {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--box-shadow-xl);
+            margin-top: var(--spacing-2xl);
+            color: var(--color-text);
+        }
+        
+        .player-track-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .player-artwork {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: var(--color-background-alt);
+        }
+        
+        .player-artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .player-details {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .player-track-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary);
+        }
+        
+        .player-track-artist {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .player-btn {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            cursor: pointer;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-full);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .player-btn:hover {
+            background-color: var(--color-background-alt);
+            color: var(--color-accent);
+        }
+        
+        .player-btn.primary {
+            background-color: var(--color-accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .player-btn.primary:hover {
+            background-color: var(--color-accent-dark);
+        }
+        
+        .player-progress {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-border);
+            border-radius: var(--border-radius-full);
+            cursor: pointer;
+            position: relative;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--color-accent);
+            border-radius: var(--border-radius-full);
+            transition: width 0.1s ease;
+        }
+        
+        .progress-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+        }
+        
+        .player-volume {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            background-color: var(--color-border);
+            border-radius: var(--border-radius-full);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .volume-fill {
+            height: 100%;
+            background-color: var(--color-accent);
+            border-radius: var(--border-radius-full);
+            transition: width 0.1s ease;
+        }
+        
+        .music-catalog {
+            padding: var(--spacing-5xl) 0;
+            background-color: var(--color-background);
+        }
+        
+        .catalog-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-3xl);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-full);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+        }
+        
+        .tracks-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .track-card {
+            display: flex;
+            gap: var(--spacing-lg);
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
+            border-color: var(--color-accent);
+        }
+        
+        .track-artwork {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            background-color: var(--color-background-alt);
+        }
+        
+        .track-artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .track-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .track-card:hover .track-play-overlay {
+            opacity: 1;
+        }
+        
+        .play-overlay-btn {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-accent);
+            border: none;
+            border-radius: var(--border-radius-full);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .play-overlay-btn:hover {
+            background-color: var(--color-accent-dark);
+            transform: scale(1.1);
+        }
+        
+        .track-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+        }
+        
+        .track-header {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .track-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .track-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .track-description {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .track-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .track-controls {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .track-btn {
+            background: none;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: var(--font-size-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .track-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .track-btn.primary {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+        }
+        
+        .track-btn.primary:hover {
+            background-color: var(--color-accent-dark);
+        }
+        
+        .streaming-platforms {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+        }
+        
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--border-radius);
+            background-color: var(--color-background-alt);
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .platform-link:hover {
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        
+        .playlist-section {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .playlist-embed {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .embed-placeholder {
+            aspect-ratio: 16/9;
+            background-color: var(--color-background-alt);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            color: var(--color-text-light);
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .track-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .track-artwork {
+                width: 100%;
+                height: 200px;
+                align-self: center;
+            }
+            
+            .track-actions {
+                justify-content: center;
+            }
+            
+            .player-track-info {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-md);
+            }
+            
+            .music-hero-title {
+                font-size: var(--font-size-4xl);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .tracks-grid {
+                gap: var(--spacing-2xl);
+            }
+            
+            .track-card {
+                padding: var(--spacing-xl);
+            }
+            
+            .player-track-info {
+                gap: var(--spacing-xl);
+            }
+            
+            .player-artwork {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .playing {
+            border-color: var(--color-accent) !important;
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        
+        .playing .track-title {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body x-data="musicPlayer()" x-init="init()">
+    
+    <!-- Music Hero Section -->
+    <section class="music-hero" id="music">
+        <div class="container">
+            <div class="music-hero-content">
+                <h1 class="music-hero-title">Music That Moves</h1>
+                <p class="music-hero-subtitle">
+                    Explore a collection of introspective songs that dive deep into human emotion, 
+                    connection, and the beauty found in vulnerable moments. Each track is a journey 
+                    into the heart of what it means to feel, to hope, and to connect.
+                </p>
+                
+                <!-- Global Music Player -->
+                <div class="global-player" x-show="currentTrack">
+                    <div class="player-track-info">
+                        <div class="player-artwork">
+                            <img :src="currentTrack?.artwork || '/images/default-artwork.jpg'" 
+                                 :alt="currentTrack?.title + ' artwork'"
+                                 loading="lazy">
+                        </div>
+                        <div class="player-details">
+                            <div class="player-track-title" x-text="currentTrack?.title">Track Title</div>
+                            <div class="player-track-artist" x-text="currentTrack?.artist">Mood</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button class="player-btn" @click="previousTrack()" :disabled="tracks.length === 0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="player-btn primary" @click="togglePlay()" :disabled="!currentTrack">
+                            <svg x-show="!isPlaying" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg x-show="isPlaying" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="player-btn" @click="nextTrack()" :disabled="tracks.length === 0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="player-progress">
+                        <div class="progress-bar" @click="seekTo($event)">
+                            <div class="progress-fill" :style="`width: ${progressPercent}%`"></div>
+                        </div>
+                        <div class="progress-time">
+                            <span x-text="formatTime(currentTime)">0:00</span>
+                            <span x-text="formatTime(duration)">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="player-volume">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                        <div class="volume-slider" @click="setVolume($event)">
+                            <div class="volume-fill" :style="`width: ${volume * 100}%`"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Music Catalog Section -->
+    <section class="music-catalog">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Music Catalog</h2>
+                <p class="section-subtitle">
+                    A collection of songs exploring themes of love, loss, growth, and connection.
+                </p>
+            </div>
+            
+            <!-- Catalog Filters -->
+            <div class="catalog-filters">
+                <button class="filter-btn" 
+                        :class="{ 'active': activeFilter === 'all' }"
+                        @click="filterTracks('all')">
+                    All Tracks
+                </button>
+                <button class="filter-btn" 
+                        :class="{ 'active': activeFilter === 'latest' }"
+                        @click="filterTracks('latest')">
+                    Latest Releases
+                </button>
+                <button class="filter-btn" 
+                        :class="{ 'active': activeFilter === 'popular' }"
+                        @click="filterTracks('popular')">
+                    Most Popular
+                </button>
+                <button class="filter-btn" 
+                        :class="{ 'active': activeFilter === 'collaborations' }"
+                        @click="filterTracks('collaborations')">
+                    Collaborations
+                </button>
+            </div>
+            
+            <!-- Tracks Grid -->
+            <div class="tracks-grid">
+                <template x-for="track in filteredTracks" :key="track.id">
+                    <article class="track-card fade-in-up" 
+                             :class="{ 'playing': currentTrack?.id === track.id }"
+                             @click="playTrack(track)">
+                        <div class="track-artwork">
+                            <img :src="track.artwork" 
+                                 :alt="track.title + ' artwork'"
+                                 loading="lazy">
+                            <div class="track-play-overlay">
+                                <button class="play-overlay-btn" @click.stop="playTrack(track)">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="track-info">
+                            <div class="track-header">
+                                <h3 class="track-title" x-text="track.title">Track Title</h3>
+                                <div class="track-meta">
+                                    <span x-text="track.releaseDate">Release Date</span>
+                                    <span>•</span>
+                                    <span x-text="track.duration">Duration</span>
+                                    <span>•</span>
+                                    <span x-text="track.genre">Genre</span>
+                                </div>
+                                <p class="track-description" x-text="track.description">Track description...</p>
+                            </div>
+                            
+                            <div class="track-actions">
+                                <div class="track-controls">
+                                    <button class="track-btn primary" @click.stop="playTrack(track)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        <span>Play</span>
+                                    </button>
+                                    <button class="track-btn" @click.stop="addToQueue(track)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h16z"/>
+                                        </svg>
+                                        <span>Queue</span>
+                                    </button>
+                                    <button class="track-btn" @click.stop="shareTrack(track)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="streaming-platforms">
+                                    <a :href="track.spotifyUrl" 
+                                       class="platform-link" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       title="Listen on Spotify"
+                                       @click.stop>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                                        </svg>
+                                    </a>
+                                    <a :href="track.appleMusicUrl" 
+                                       class="platform-link" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       title="Listen on Apple Music"
+                                       @click.stop>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                    </a>
+                                    <a :href="track.youtubeUrl" 
+                                       class="platform-link" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       title="Watch on YouTube"
+                                       @click.stop>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Streaming Playlist Section -->
+    <section class="playlist-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Featured Playlist</h2>
+                <p class="section-subtitle">
+                    A curated collection of my latest releases and favorites, perfect for introspective moments.
+                </p>
+            </div>
+            
+            <div class="playlist-embed">
+                <div class="embed-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    <h3>A Moody Place - Essential Tracks</h3>
+                    <p>Stream the complete collection on your favorite platform</p>
+                    <div class="flex gap-4 justify-center" style="margin-top: var(--spacing-lg);">
+                        <a href="https://open.spotify.com/playlist/amoodyplace" 
+                           class="btn btn-primary"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Open in Spotify
+                        </a>
+                        <a href="https://music.apple.com/playlist/amoodyplace" 
+                           class="btn btn-outline"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Open in Apple Music
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Page JavaScript -->
+    <script>
+        function musicPlayer() {
+            return {
+                // Player state
+                currentTrack: null,
+                isPlaying: false,
+                currentTime: 0,
+                duration: 30, // 30-second previews
+                volume: 0.7,
+                audioElement: null,
+                
+                // Catalog state
+                activeFilter: 'all',
+                tracks: [
+                    {
+                        id: 1,
+                        title: 'Midnight Reflections',
+                        artist: 'Mood',
+                        album: 'Introspective Moments',
+                        releaseDate: 'March 2025',
+                        duration: '3:45',
+                        genre: 'Alternative',
+                        description: 'A contemplative journey through late-night thoughts and emotions, exploring the quiet moments that define our inner landscape.',
+                        artwork: '/images/midnight-reflections-artwork.jpg',
+                        audioUrl: '/audio/previews/midnight-reflections-preview.mp3',
+                        spotifyUrl: 'https://open.spotify.com/track/midnight-reflections',
+                        appleMusicUrl: 'https://music.apple.com/album/midnight-reflections',
+                        youtubeUrl: 'https://www.youtube.com/watch?v=midnight-reflections',
+                        category: ['latest', 'popular'],
+                        featured: true
+                    },
+                    {
+                        id: 2,
+                        title: 'Echoes of Tomorrow',
+                        artist: 'Mood',
+                        album: 'Hope & Uncertainty',
+                        releaseDate: 'February 2025',
+                        duration: '4:12',
+                        genre: 'Electronic',
+                        description: 'An optimistic exploration of future possibilities, weaving hope and uncertainty into a tapestry of sound.',
+                        artwork: '/images/echoes-tomorrow-artwork.jpg',
+                        audioUrl: '/audio/previews/echoes-tomorrow-preview.mp3',
+                        spotifyUrl: 'https://open.spotify.com/track/echoes-tomorrow',
+                        appleMusicUrl: 'https://music.apple.com/album/echoes-tomorrow',
+                        youtubeUrl: 'https://www.youtube.com/watch?v=echoes-tomorrow',
+                        category: ['latest', 'popular'],
+                        featured: true
+                    },
+                    {
+                        id: 3,
+                        title: 'Shared Silence (feat. Luna)',
+                        artist: 'Mood feat. Luna',
+                        album: 'Collaborations Vol. 1',
+                        releaseDate: 'January 2025',
+                        duration: '3:28',
+                        genre: 'Indie Folk',
+                        description: 'A beautiful collaboration exploring the power of unspoken understanding and the intimacy found in quiet moments together.',
+                        artwork: '/images/shared-silence-artwork.jpg',
+                        audioUrl: '/audio/previews/shared-silence-preview.mp3',
+                        spotifyUrl: 'https://open.spotify.com/track/shared-silence',
+                        appleMusicUrl: 'https://music.apple.com/album/shared-silence',
+                        youtubeUrl: 'https://www.youtube.com/watch?v=shared-silence',
+                        category: ['collaborations', 'popular'],
+                        featured: false
+                    },
+                    {
+                        id: 4,
+                        title: 'Breaking Through',
+                        artist: 'Mood',
+                        album: 'Growth Stories',
+                        releaseDate: 'December 2024',
+                        duration: '4:35',
+                        genre: 'Alternative Rock',
+                        description: 'A powerful anthem about overcoming personal barriers and finding strength in vulnerability.',
+                        artwork: '/images/breaking-through-artwork.jpg',
+                        audioUrl: '/audio/previews/breaking-through-preview.mp3',
+                        spotifyUrl: 'https://open.spotify.com/track/breaking-through',
+                        appleMusicUrl: 'https://music.apple.com/album/breaking-through',
+                        youtubeUrl: 'https://www.youtube.com/watch?v=breaking-through',
+                        category: ['popular'],
+                        featured: false
+                    }
+                ],
+                
+                init() {
+                    // Initialize audio element
+                    this.audioElement = new Audio();
+                    this.setupAudioEvents();
+                    
+                    // Set first track as default
+                    if (this.tracks.length > 0) {
+                        this.currentTrack = this.tracks[0];
+                    }
+                    
+                    // Initialize animations
+                    this.initAnimations();
+                },
+                
+                setupAudioEvents() {
+                    this.audioElement.addEventListener('loadedmetadata', () => {
+                        this.duration = this.audioElement.duration;
+                    });
+                    
+                    this.audioElement.addEventListener('timeupdate', () => {
+                        this.currentTime = this.audioElement.currentTime;
+                    });
+                    
+                    this.audioElement.addEventListener('ended', () => {
+                        this.nextTrack();
+                    });
+                    
+                    this.audioElement.addEventListener('loadstart', () => {
+                        this.duration = 30; // Default to 30 seconds for previews
+                    });
+                },
+                
+                playTrack(track) {
+                    this.currentTrack = track;
+                    this.audioElement.src = track.audioUrl;
+                    this.audioElement.volume = this.volume;
+                    this.audioElement.play().then(() => {
+                        this.isPlaying = true;
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                        // Fallback: simulate playing for demo
+                        this.isPlaying = true;
+                        this.simulateProgress();
+                    });
+                },
+                
+                togglePlay() {
+                    if (!this.currentTrack) return;
+                    
+                    if (this.isPlaying) {
+                        this.audioElement.pause();
+                        this.isPlaying = false;
+                    } else {
+                        this.audioElement.play().then(() => {
+                            this.isPlaying = true;
+                        }).catch(() => {
+                            this.isPlaying = true;
+                            this.simulateProgress();
+                        });
+                    }
+                },
+                
+                nextTrack() {
+                    const currentIndex = this.tracks.findIndex(t => t.id === this.currentTrack.id);
+                    const nextIndex = (currentIndex + 1) % this.tracks.length;
+                    this.playTrack(this.tracks[nextIndex]);
+                },
+                
+                previousTrack() {
+                    const currentIndex = this.tracks.findIndex(t => t.id === this.currentTrack.id);
+                    const prevIndex = currentIndex === 0 ? this.tracks.length - 1 : currentIndex - 1;
+                    this.playTrack(this.tracks[prevIndex]);
+                },
+                
+                seekTo(event) {
+                    const rect = event.target.getBoundingClientRect();
+                    const percent = (event.clientX - rect.left) / rect.width;
+                    this.currentTime = percent * this.duration;
+                    this.audioElement.currentTime = this.currentTime;
+                },
+                
+                setVolume(event) {
+                    const rect = event.target.getBoundingClientRect();
+                    this.volume = (event.clientX - rect.left) / rect.width;
+                    this.audioElement.volume = this.volume;
+                },
+                
+                formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs.toString().padStart(2, '0')}`;
+                },
+                
+                filterTracks(filter) {
+                    this.activeFilter = filter;
+                },
+                
+                addToQueue(track) {
+                    // Queue functionality would be implemented here
+                    console.log('Added to queue:', track.title);
+                },
+                
+                shareTrack(track) {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: track.title,
+                            text: `Listen to "${track.title}" by ${track.artist}`,
+                            url: window.location.href
+                        });
+                    } else {
+                        // Fallback: copy to clipboard
+                        navigator.clipboard.writeText(`Listen to "${track.title}" by ${track.artist} at ${window.location.href}`);
+                    }
+                },
+                
+                simulateProgress() {
+                    // For demo purposes when real audio fails
+                    const interval = setInterval(() => {
+                        if (!this.isPlaying || this.currentTime >= this.duration) {
+                            clearInterval(interval);
+                            if (this.currentTime >= this.duration) {
+                                this.isPlaying = false;
+                                this.currentTime = 0;
+                            }
+                            return;
+                        }
+                        this.currentTime += 0.1;
+                    }, 100);
+                },
+                
+                initAnimations() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    });
+                    
+                    document.querySelectorAll('.fade-in-up').forEach(el => {
+                        observer.observe(el);
+                    });
+                },
+                
+                get progressPercent() {
+                    return this.duration ? (this.currentTime / this.duration) * 100 : 0;
+                },
+                
+                get filteredTracks() {
+                    if (this.activeFilter === 'all') {
+                        return this.tracks;
+                    }
+                    return this.tracks.filter(track => track.category.includes(this.activeFilter));
+                }
+            };
+        }
+    </script>
+</body>
+</html>

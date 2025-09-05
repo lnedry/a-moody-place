@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option C: Modern Musical - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Option C: Modern Musical Styles */
+        .option-c-hero {
+            padding: 4rem 0;
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-c-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100V0l50 50 50-50v100L50 50z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E") repeat;
+            z-index: 1;
+        }
+        
+        .option-c-content {
+            padding: 0 4rem;
+            z-index: 2;
+            position: relative;
+            max-width: 600px;
+        }
+        
+        .option-c-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .option-c-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .option-c-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .option-c-stat {
+            text-align: center;
+        }
+        
+        .option-c-stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e74c3c;
+            display: block;
+        }
+        
+        .option-c-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .option-c-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .option-c-cta:hover {
+            background: #c0392b;
+        }
+        
+        .option-c-player {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .option-c-player-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .option-c-player-title {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .option-c-track {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .option-c-artwork {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .option-c-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(231, 76, 60, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .option-c-play-overlay:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .option-c-track-info h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .option-c-track-meta {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .option-c-track-desc {
+            color: #95a5a6;
+            line-height: 1.5;
+        }
+        
+        .option-c-streaming {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .option-c-stream-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .option-c-stream-btn:hover {
+            background: #34495e;
+        }
+        
+        @media (max-width: 768px) {
+            .option-c-content {
+                padding: 0 2rem;
+            }
+            .option-c-track {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .option-c-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" style="background: #1a1a1a; border-bottom: 1px solid #333;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #e74c3c; font-weight: 700;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/home-option-c" class="nav-link active" style="color: white;">Home</a></li>
+                <li><a href="/about" class="nav-link" style="color: #bdc3c7;">About</a></li>
+                <li><a href="/music" class="nav-link" style="color: #bdc3c7;">Music</a></li>
+                <li><a href="/contact" class="nav-link" style="color: #bdc3c7;">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="option-c-hero">
+            <div class="option-c-content">
+                <h1 class="option-c-title">A Moody Place</h1>
+                <p class="option-c-subtitle">
+                    Experience introspective music that connects with your emotions. 
+                    Stream the latest releases and discover the sound of authentic storytelling.
+                </p>
+                <div class="option-c-stats">
+                    <div class="option-c-stat">
+                        <span class="option-c-stat-number">1</span>
+                        <span class="option-c-stat-label">Release</span>
+                    </div>
+                    <div class="option-c-stat">
+                        <span class="option-c-stat-number">2025</span>
+                        <span class="option-c-stat-label">Debut Year</span>
+                    </div>
+                    <div class="option-c-stat">
+                        <span class="option-c-stat-number">∞</span>
+                        <span class="option-c-stat-label">Emotions</span>
+                    </div>
+                </div>
+                <a href="#player" class="option-c-cta">
+                    <span>▶</span> Play Now
+                </a>
+            </div>
+        </section>
+
+        <!-- Music Player Section -->
+        <section class="option-c-player" id="player">
+            <div class="option-c-player-container">
+                <h2 class="option-c-player-title">Now Playing</h2>
+                <div class="option-c-track">
+                    <div class="option-c-artwork">
+                        <img src="/images/falling_632x632.webp" alt="Falling">
+                        <div class="option-c-play-overlay">▶</div>
+                    </div>
+                    <div class="option-c-track-info">
+                        <h3>Falling</h3>
+                        <div class="option-c-track-meta">
+                            Mood • Debut Single • Released June 13, 2025
+                        </div>
+                        <div class="option-c-track-desc">
+                            A powerful debut that explores themes of vulnerability and personal growth. 
+                            This introspective track showcases Mood's signature sound of emotional depth 
+                            combined with sophisticated production.
+                        </div>
+                    </div>
+                    <div class="option-c-streaming">
+                        <a href="#" class="option-c-stream-btn">
+                            <span>🎵</span> Spotify
+                        </a>
+                        <a href="#" class="option-c-stream-btn">
+                            <span>🎵</span> Apple Music
+                        </a>
+                        <a href="#" class="option-c-stream-btn">
+                            <span>▶</span> YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

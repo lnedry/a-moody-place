@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Mood - Get in touch for collaborations, bookings, press inquiries, or just to connect. Professional songwriter and topliner available for creative partnerships.">
+    <title>Contact - A Moody Place</title>
+    <link rel="canonical" href="https://a-moody-place.com/contact">
+    
+    <!-- Page-specific styles for contact -->
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+            padding: var(--spacing-5xl) 0 var(--spacing-4xl);
+            position: relative;
+        }
+        
+        .contact-hero-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-hero-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            line-height: var(--line-height-tight);
+        }
+        
+        .contact-hero-subtitle {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-light);
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .contact-methods {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .contact-method {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-lg);
+            border-color: var(--color-accent);
+        }
+        
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-accent);
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .contact-method-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .contact-method-description {
+            color: var(--color-text-light);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .contact-form-section {
+            background-color: var(--color-background);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: var(--spacing-3xl);
+        }
+        
+        .form-intro {
+            text-align: center;
+        }
+        
+        .form-intro-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-intro-text {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .inquiry-types {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .inquiry-type {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background-color: var(--color-background-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+        }
+        
+        .inquiry-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+        }
+        
+        .form-label.required::after {
+            content: ' *';
+            color: var(--color-error);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-family: var(--font-primary);
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+            background-color: var(--color-background);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-grid {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .form-note {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-xs);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .form-submit {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .submit-btn {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: var(--spacing-md) var(--spacing-2xl);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            background-color: var(--color-accent-dark);
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-message {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .form-message.success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--color-success);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+        }
+        
+        .form-message.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--color-error);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .contact-info-section {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            gap: var(--spacing-3xl);
+        }
+        
+        .info-card {
+            background-color: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        .info-card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-primary);
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .info-card-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .info-card-content {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .info-card-content strong {
+            color: var(--color-text);
+        }
+        
+        .social-connect {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            padding: var(--spacing-5xl) 0;
+            text-align: center;
+        }
+        
+        .social-connect-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-connect-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .social-connect-text {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .contact-methods {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .inquiry-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .contact-hero-title {
+                font-size: var(--font-size-6xl);
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .contact-form-container {
+                grid-template-columns: 1fr 2fr;
+                gap: var(--spacing-4xl);
+            }
+            
+            .form-intro {
+                text-align: left;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body x-data="contactForm()" x-init="init()">
+    
+    <!-- Contact Hero Section -->
+    <section class="contact-hero" id="contact">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1 class="contact-hero-title">Let's Connect</h1>
+                <p class="contact-hero-subtitle">
+                    Whether you're interested in collaboration, booking, press opportunities, 
+                    or simply want to share how the music has touched you, I'd love to hear from you. 
+                    Every message matters and deserves a thoughtful response.
+                </p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method" @click="selectInquiryType('collaboration')">
+                        <div class="contact-method-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.5-8h-4V6c0-1.11-.89-2-2-2s-2 .89-2 2v2H7.5L5 16h2.5v6h3v-6h2v6h3zm-7.5-10.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm-2 16v-6H1l2.5-8h4V6c0-1.11.89-2 2-2s2 .89 2 2v2h4.5l2.5 8H16v6h-3v-6h-2v6H8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-method-title">Creative Collaboration</h3>
+                        <p class="contact-method-description">
+                            Ready to create something beautiful together? Let's discuss songwriting, 
+                            toplining, or featured collaborations.
+                        </p>
+                    </div>
+                    
+                    <div class="contact-method" @click="selectInquiryType('booking')">
+                        <div class="contact-method-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-method-title">Performance Booking</h3>
+                        <p class="contact-method-description">
+                            Interested in having me perform at your venue or event? 
+                            Let's talk about creating an intimate musical experience.
+                        </p>
+                    </div>
+                    
+                    <div class="contact-method" @click="selectInquiryType('press')">
+                        <div class="contact-method-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 18H7v-1h6v1zm0-3H7v-6h6v6zm0-8H7V7h6v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-method-title">Press & Media</h3>
+                        <p class="contact-method-description">
+                            Looking for interviews, press materials, or story opportunities? 
+                            I'm always happy to share the story behind the music.
+                        </p>
+                    </div>
+                    
+                    <div class="contact-method" @click="selectInquiryType('general')">
+                        <div class="contact-method-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <h3 class="contact-method-title">Just Say Hello</h3>
+                        <p class="contact-method-description">
+                            Sometimes the music creates connections that deserve acknowledgment. 
+                            I'd love to hear how these songs have been part of your journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-form-container">
+                <!-- Form Introduction -->
+                <div class="form-intro fade-in">
+                    <h2 class="form-intro-title">Send a Message</h2>
+                    <p class="form-intro-text">
+                        Every message receives personal attention. I typically respond within 24-48 hours 
+                        during business days. For time-sensitive inquiries, please note the urgency in your message.
+                    </p>
+                    
+                    <div class="inquiry-types">
+                        <div class="inquiry-type">
+                            <div class="inquiry-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2z"/>
+                                </svg>
+                            </div>
+                            <span><strong>Collaboration:</strong> Songwriting, toplining, featured work</span>
+                        </div>
+                        <div class="inquiry-type">
+                            <div class="inquiry-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                </svg>
+                            </div>
+                            <span><strong>Booking:</strong> Live performances, events, showcases</span>
+                        </div>
+                        <div class="inquiry-type">
+                            <div class="inquiry-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                            <span><strong>Press:</strong> Interviews, features, press materials</span>
+                        </div>
+                        <div class="inquiry-type">
+                            <div class="inquiry-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09z"/>
+                                </svg>
+                            </div>
+                            <span><strong>General:</strong> Fan messages, feedback, questions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form fade-in" @submit.prevent="submitForm()">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name" class="form-label required">Your Name</label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name"
+                                   x-model="form.name"
+                                   class="form-input"
+                                   required
+                                   placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label required">Email Address</label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email"
+                                   x-model="form.email"
+                                   class="form-input"
+                                   required
+                                   placeholder="your@email.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="inquiryType" class="form-label required">Inquiry Type</label>
+                            <select id="inquiryType" 
+                                    name="inquiryType"
+                                    x-model="form.inquiryType"
+                                    class="form-select"
+                                    required>
+                                <option value="">Select inquiry type</option>
+                                <option value="collaboration">Creative Collaboration</option>
+                                <option value="booking">Performance Booking</option>
+                                <option value="press">Press & Media</option>
+                                <option value="general">General/Fan Message</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" class="form-label">Company/Organization</label>
+                            <input type="text" 
+                                   id="company" 
+                                   name="company"
+                                   x-model="form.company"
+                                   class="form-input"
+                                   placeholder="Optional">
+                            <div class="form-note">If applicable, please include your company or organization name.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label required">Subject</label>
+                        <input type="text" 
+                               id="subject" 
+                               name="subject"
+                               x-model="form.subject"
+                               class="form-input"
+                               required
+                               placeholder="Brief description of your message">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label required">Your Message</label>
+                        <textarea id="message" 
+                                  name="message"
+                                  x-model="form.message"
+                                  class="form-textarea"
+                                  required
+                                  placeholder="Please share your thoughts, ideas, or questions. The more context you provide, the better I can understand how to help you."></textarea>
+                        <div class="form-note">
+                            For collaboration inquiries, please include details about your project timeline, 
+                            style preferences, and any specific requirements.
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" 
+                               id="phone" 
+                               name="phone"
+                               x-model="form.phone"
+                               class="form-input"
+                               placeholder="Optional - for urgent inquiries">
+                        <div class="form-note">
+                            Optional. Providing a phone number allows for faster communication on time-sensitive projects.
+                        </div>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" 
+                                class="submit-btn"
+                                :disabled="submitting">
+                            <svg x-show="submitting" width="16" height="16" class="animate-spin" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span x-text="submitting ? 'Sending Message...' : 'Send Message'">Send Message</span>
+                        </button>
+                        
+                        <div x-show="message" 
+                             class="form-message"
+                             :class="messageType"
+                             x-text="message">
+                        </div>
+                    </div>
+                    
+                    <div class="form-note" style="text-align: center; margin-top: var(--spacing-lg); font-size: var(--font-size-xs);">
+                        By sending this message, you agree to our privacy policy. 
+                        Your information will only be used to respond to your inquiry and will not be shared with third parties.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Information Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Additional Contact Information</h2>
+                <p class="section-subtitle">
+                    Alternative ways to connect and important details about response times and availability.
+                </p>
+            </div>
+            
+            <div class="contact-info-grid">
+                <div class="info-card fade-in">
+                    <div class="info-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57V12c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.53 3.5-3.5V12c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="info-card-title">Email Response</h3>
+                    <div class="info-card-content">
+                        <p><strong>Standard Response:</strong> 24-48 hours</p>
+                        <p><strong>Urgent Inquiries:</strong> Same day when marked urgent</p>
+                        <p><strong>Complex Projects:</strong> May require 3-5 days for thorough consideration</p>
+                    </div>
+                </div>
+                
+                <div class="info-card fade-in">
+                    <div class="info-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h3 class="info-card-title">Availability</h3>
+                    <div class="info-card-content">
+                        <p><strong>Time Zone:</strong> Eastern Standard Time (EST)</p>
+                        <p><strong>Business Hours:</strong> Monday - Friday, 9 AM - 6 PM</p>
+                        <p><strong>Creative Sessions:</strong> Flexible scheduling, including evenings and weekends</p>
+                    </div>
+                </div>
+                
+                <div class="info-card fade-in">
+                    <div class="info-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="info-card-title">Collaboration Rates</h3>
+                    <div class="info-card-content">
+                        <p><strong>Songwriting:</strong> Negotiated based on project scope</p>
+                        <p><strong>Toplining:</strong> Industry-standard rates with flexible terms</p>
+                        <p><strong>Live Performance:</strong> Varies by venue, duration, and travel requirements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Connect Section -->
+    <section class="social-connect">
+        <div class="container">
+            <div class="social-connect-content">
+                <h2 class="social-connect-title">Stay Connected</h2>
+                <p class="social-connect-text">
+                    Follow along for daily inspiration, behind-the-scenes content, 
+                    and updates on new releases and collaborations.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://instagram.com/amoodyplace" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        Instagram
+                    </a>
+                    
+                    <a href="https://open.spotify.com/artist/mood" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                        </svg>
+                        Spotify
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@amoodyplace" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Page JavaScript -->
+    <script>
+        function contactForm() {
+            return {
+                form: {
+                    name: '',
+                    email: '',
+                    inquiryType: '',
+                    company: '',
+                    subject: '',
+                    message: '',
+                    phone: ''
+                },
+                submitting: false,
+                message: '',
+                messageType: '',
+                
+                init() {
+                    this.initAnimations();
+                },
+                
+                selectInquiryType(type) {
+                    this.form.inquiryType = type;
+                    // Auto-scroll to form
+                    document.querySelector('.contact-form').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                },
+                
+                async submitForm() {
+                    this.submitting = true;
+                    this.message = '';
+                    
+                    // Validate required fields
+                    if (!this.form.name || !this.form.email || !this.form.inquiryType || !this.form.subject || !this.form.message) {
+                        this.showMessage('Please fill in all required fields.', 'error');
+                        this.submitting = false;
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(this.form.email)) {
+                        this.showMessage('Please enter a valid email address.', 'error');
+                        this.submitting = false;
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('/api/contact', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                ...this.form,
+                                source: 'contact_form',
+                                timestamp: new Date().toISOString()
+                            })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            this.showMessage(
+                                'Thank you for your message! I\'ll respond within 24-48 hours during business days.',
+                                'success'
+                            );
+                            this.resetForm();
+                        } else {
+                            throw new Error(data.message || 'Something went wrong');
+                        }
+                    } catch (error) {
+                        console.error('Contact form error:', error);
+                        this.showMessage(
+                            'There was an issue sending your message. Please try again or contact me directly via social media.',
+                            'error'
+                        );
+                    }
+                    
+                    this.submitting = false;
+                },
+                
+                showMessage(text, type) {
+                    this.message = text;
+                    this.messageType = type;
+                    
+                    // Auto-clear success messages after 5 seconds
+                    if (type === 'success') {
+                        setTimeout(() => {
+                            this.message = '';
+                        }, 5000);
+                    }
+                },
+                
+                resetForm() {
+                    this.form = {
+                        name: '',
+                        email: '',
+                        inquiryType: '',
+                        company: '',
+                        subject: '',
+                        message: '',
+                        phone: ''
+                    };
+                },
+                
+                initAnimations() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    });
+                    
+                    document.querySelectorAll('.fade-in').forEach(el => {
+                        observer.observe(el);
+                    });
+                }
+            };
+        }
+    </script>
+    
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "name": "a-moody-place",
+  "version": "1.0.0",
+  "description": "Official website for musician 'Mood' - A comprehensive artist platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "postcss public/css/main.css -o public/dist/main.min.css --env production",
+    "build:js": "esbuild public/js/main.js --bundle --minify --outfile=public/dist/main.min.js",
+    "watch:css": "postcss public/css/main.css -o public/dist/main.css --watch",
+    "watch:js": "esbuild public/js/main.js --bundle --outfile=public/dist/main.js --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .js --ignore-pattern public/dist/",
+    "lint:fix": "eslint . --ext .js --ignore-pattern public/dist/ --fix",
+    "db:migrate": "node database/migrate.js",
+    "db:seed": "node database/seed.js",
+    "db:reset": "npm run db:migrate && npm run db:seed",
+    "logs:clear": "rm -f logs/*.log",
+    "deploy:production": "rsync -avz --exclude node_modules . production-server:/var/www/vhosts/a-moody-place.com/"
+  },
+  "keywords": [
+    "music",
+    "artist-website",
+    "portfolio",
+    "express",
+    "alpine-js"
+  ],
+  "author": "A Moody Place Development Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mariadb": "^3.2.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "express-validator": "^7.0.1",
+    "express-rate-limit": "^6.8.1",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "express-session": "^1.17.3",
+    "express-mysql-session": "^2.1.8",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.4",
+    "nodemailer": "^6.9.4",
+    "ioredis": "^5.3.2",
+    "node-cache": "^5.1.2",
+    "validator": "^13.11.0",
+    "isomorphic-dompurify": "^2.11.0",
+    "alpinejs": "^3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3",
+    "eslint": "^8.46.0",
+    "eslint-config-standard": "^17.1.0",
+    "postcss": "^8.4.27",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^12.0.1",
+    "esbuild": "^0.18.17",
+    "cssnano": "^6.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "tests/coverage",
+    "collectCoverageFrom": [
+      "controllers/**/*.js",
+      "models/**/*.js",
+      "services/**/*.js",
+      "utils/**/*.js",
+      "!tests/**"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server.js",
+      "app.js",
+      "routes/",
+      "controllers/",
+      "middleware/",
+      "models/",
+      "services/",
+      "utils/"
+    ],
+    "ext": "js,json",
+    "env": {
+      "NODE_ENV": "development"
+    }
+  }
+}

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Kit - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Press Kit Page Styles */
+        .press-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .press-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .press-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .press-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .press-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .press-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .press-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .press-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .press-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bio-section {
+            margin-bottom: 2rem;
+        }
+        
+        .bio-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .bio-text {
+            color: #7f8c8d;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .press-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        .download-section {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ecf0f1;
+        }
+        
+        .download-info h5 {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+        
+        .download-meta {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+        
+        .download-btn {
+            padding: 0.5rem 1rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #34495e;
+        }
+        
+        .download-btn.unavailable {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #7f8c8d;
+        }
+        
+        .contact-item strong {
+            color: #2c3e50;
+        }
+        
+        .contact-note {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .press-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .press-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .press-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/music" class="nav-link">Music</a></li>
+                <li><a href="/shows" class="nav-link">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link active">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="press-hero">
+            <div class="press-hero-content">
+                <h1 class="press-title">Press Kit</h1>
+                <p class="press-subtitle">
+                    Media resources, biography, and downloadable assets<br>
+                    for press, radio, and industry professionals.
+                </p>
+            </div>
+        </section>
+
+        <!-- Press Kit Content -->
+        <section class="press-section">
+            <div class="press-container">
+                <div class="press-grid">
+                    <!-- Biography & Info -->
+                    <div class="press-card">
+                        <h3>Artist Biography</h3>
+                        
+                        <div class="bio-section">
+                            <h4>Short Bio (50 words)</h4>
+                            <p class="bio-text">
+                                Mood creates introspective indie music under the moniker "A Moody Place." 
+                                With singles "Falling" and the upcoming "Moog Play," Mood explores themes of vulnerability 
+                                and personal growth through atmospheric production and authentic storytelling. Based in [Location], 
+                                Mood crafts music that connects with the deeper emotions of human experience.
+                            </p>
+                        </div>
+                        
+                        <div class="bio-section">
+                            <h4>Extended Bio (150 words)</h4>
+                            <p class="bio-text">
+                                A Moody Place is the musical project of [Artist Name], an indie singer-songwriter 
+                                who creates atmospheric, introspective music that explores the complexities of 
+                                human emotion and connection. Drawing inspiration from personal experiences and 
+                                quiet moments of reflection, Mood's sound blends intimate vocals with sophisticated 
+                                production, creating spaces for listeners to process their own emotional journeys.
+                                <br><br>
+                                The project's debut single "Falling," released in June 2025, showcases Mood's 
+                                signature approach to songwriting—vulnerable, honest, and deeply felt. The upcoming 
+                                single "Moog Play," set for release on September 12, 2025, continues this exploration 
+                                of sonic territories while maintaining the introspective depth that defines the project. 
+                                A Moody Place represents a commitment to authentic artistic expression in an increasingly noisy world.
+                            </p>
+                        </div>
+                        
+                        <div class="press-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Singles</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2025</span>
+                                <span class="stat-label">Debut Year</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Downloads -->
+                    <div class="press-card">
+                        <h3>Downloads</h3>
+                        
+                        <div class="download-section">
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>High-Res Artist Photos</h5>
+                                    <div class="download-meta">JPG, 300 DPI • 2.5 MB</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Coming Soon</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>"Falling" Album Artwork</h5>
+                                    <div class="download-meta">JPG, PNG • Various sizes</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Coming Soon</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>"Moog Play" Album Artwork</h5>
+                                    <div class="download-meta">JPG, PNG • Various sizes</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Available 9/12</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>Logo & Brand Assets</h5>
+                                    <div class="download-meta">PNG, SVG • Vector files</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Coming Soon</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>Press Release - "Falling"</h5>
+                                    <div class="download-meta">PDF, DOC • 1 page</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Coming Soon</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>Press Release - "Moog Play"</h5>
+                                    <div class="download-meta">PDF, DOC • 1 page</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Available 9/12</a>
+                            </div>
+                            
+                            <div class="download-item">
+                                <div class="download-info">
+                                    <h5>Complete Press Kit</h5>
+                                    <div class="download-meta">ZIP archive • 15 MB</div>
+                                </div>
+                                <a href="#" class="download-btn unavailable">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Press & Industry Contact</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>General Inquiries:</strong>
+                            <span>contact@a-moody-place.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <strong>Booking & Shows:</strong>
+                            <span>booking@a-moody-place.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <strong>Press & Media:</strong>
+                            <span>press@a-moody-place.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <strong>Sync & Licensing:</strong>
+                            <span>sync@a-moody-place.com</span>
+                        </div>
+                    </div>
+                    
+                    <p class="contact-note">
+                        For urgent press inquiries or time-sensitive requests, 
+                        please include "URGENT" in your subject line. 
+                        We typically respond within 24-48 hours.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <p>© 2025 A Moody Place. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

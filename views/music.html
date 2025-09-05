@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Music Page Styles */
+        .music-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .music-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .music-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .music-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .music-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .music-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .releases-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .release-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .release-header {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .release-artwork {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .artwork-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .release-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .release-meta {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .release-description {
+            color: #95a5a6;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .streaming-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .stream-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stream-btn:hover {
+            background: #34495e;
+            transform: translateY(-1px);
+        }
+        
+        .stream-btn.primary {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
+        }
+        
+        .stream-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .platforms-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .platforms-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .platforms-text {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .platforms-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .music-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .release-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .release-artwork {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .streaming-links {
+                justify-content: center;
+            }
+            
+            .platforms-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stream-btn {
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/music" class="nav-link active">Music</a></li>
+                <li><a href="/shows" class="nav-link">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="music-hero">
+            <div class="music-hero-content">
+                <h1 class="music-title">Music</h1>
+                <p class="music-subtitle">
+                    Introspective songs exploring the depths of human emotion<br>
+                    and the art of authentic storytelling.
+                </p>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section class="music-section">
+            <div class="music-container">
+                <!-- Latest Releases -->
+                <div class="releases-grid">
+                    <!-- Moog Play Single - Upcoming -->
+                    <div class="release-card" style="border: 2px solid #2c3e50; background: linear-gradient(135deg, #f8f9fa, #ffffff);">
+                        <div class="release-header">
+                            <div class="release-artwork">
+                                <div class="artwork-placeholder" style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; font-weight: 600;">
+                                    Coming 9/12
+                                </div>
+                            </div>
+                            <div class="release-info">
+                                <h3 style="color: #2c3e50;">Moog Play <span style="font-size: 0.7em; background: #2c3e50; color: white; padding: 0.2em 0.8em; border-radius: 12px; font-weight: 500;">NEW</span></h3>
+                                <div class="release-meta">
+                                    Releasing September 12, 2025 • New Single
+                                </div>
+                                <p class="release-description">
+                                    The highly anticipated follow-up to "Falling" explores new sonic territories while 
+                                    maintaining the introspective depth that defines A Moody Place. A contemplative journey 
+                                    through sound and emotion.
+                                </p>
+                                <div class="streaming-links">
+                                    <div class="stream-btn primary" style="background: #95a5a6; cursor: not-allowed;">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        Pre-Save Coming Soon
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Falling Single -->
+                    <div class="release-card">
+                        <div class="release-header">
+                            <div class="release-artwork">
+                                <img src="/images/falling_album.jpeg" alt="Falling by Mood" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="release-info">
+                                <h3>Falling</h3>
+                                <div class="release-meta">
+                                    Released June 13, 2025 • Debut Single
+                                </div>
+                                <p class="release-description">
+                                    Mood's debut release captures the raw emotions of vulnerability and self-discovery, 
+                                    marking the beginning of an introspective musical journey that explores the beauty 
+                                    in life's quiet moments.
+                                </p>
+                                <div class="streaming-links">
+                                    <a href="#" class="stream-btn primary">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Play Preview
+                                    </a>
+                                    <a href="#" class="stream-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                                        </svg>
+                                        Spotify
+                                    </a>
+                                    <a href="#" class="stream-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                        Apple Music
+                                    </a>
+                                    <a href="#" class="stream-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                        YouTube
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Streaming Platforms -->
+                <div class="platforms-section">
+                    <h3 class="platforms-title">Listen Everywhere</h3>
+                    <p class="platforms-text">
+                        Find A Moody Place on all major streaming platforms and follow along 
+                        for new releases and updates.
+                    </p>
+                    
+                    <div class="platforms-grid">
+                        <a href="#" class="stream-btn primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            Follow on Spotify
+                        </a>
+                        <a href="#" class="stream-btn primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            Listen on Apple Music
+                        </a>
+                        <a href="#" class="stream-btn primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            Watch on YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <p>© 2025 A Moody Place. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

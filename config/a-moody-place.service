@@ -1,0 +1,80 @@
+# Systemd Service File for A Moody Place
+#
+# This file should be placed at: /etc/systemd/system/a-moody-place.service
+#
+# Installation commands:
+# sudo cp config/a-moody-place.service /etc/systemd/system/
+# sudo systemctl daemon-reload
+# sudo systemctl enable a-moody-place
+# sudo systemctl start a-moody-place
+
+[Unit]
+Description=A Moody Place - Artist Website and Music Platform
+Documentation=https://github.com/your-org/a-moody-place
+After=network.target mysql.service
+Wants=network.target
+
+[Service]
+# Service configuration
+Type=simple
+User=www-data
+Group=www-data
+
+# Application settings
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=127.0.0.1
+
+# Working directory
+WorkingDirectory=/var/www/vhosts/a-moody-place.com
+
+# Execution command
+ExecStart=/usr/bin/node server.js
+
+# Restart configuration
+Restart=always
+RestartSec=10
+StartLimitInterval=60s
+StartLimitBurst=3
+
+# Process management
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# Resource limits
+LimitNOFILE=65535
+LimitNPROC=4096
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/vhosts/a-moody-place.com/uploads /var/www/vhosts/a-moody-place.com/logs
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+# Network security
+PrivateNetwork=false
+RestrictAddressFamilies=AF_INET AF_INET6
+IPAddressDeny=any
+IPAddressAllow=localhost
+IPAddressAllow=127.0.0.0/8
+IPAddressAllow=10.0.0.0/8
+IPAddressAllow=172.16.0.0/12
+IPAddressAllow=192.168.0.0/16
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=a-moody-place
+
+# Environment file (contains secrets)
+EnvironmentFile=-/var/www/vhosts/a-moody-place.com/.env
+
+[Install]
+WantedBy=multi-user.target

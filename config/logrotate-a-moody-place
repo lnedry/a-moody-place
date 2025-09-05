@@ -1,0 +1,42 @@
+# Log rotation configuration for A Moody Place
+# This file should be placed at: /etc/logrotate.d/a-moody-place
+
+# Application logs
+/var/www/vhosts/a-moody-place.com/logs/*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    create 640 www-data www-data
+    copytruncate
+    
+    postrotate
+        # Send USR1 signal to application to reopen log files
+        systemctl kill -s USR1 a-moody-place || true
+    endscript
+}
+
+# Nginx logs for this application
+/var/log/nginx/a-moody-place-*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    create 640 www-data adm
+    sharedscripts
+    
+    prerotate
+        if [ -d /etc/logrotate.d/httpd-prerotate ]; then \
+            run-parts /etc/logrotate.d/httpd-prerotate; \
+        fi
+    endscript
+    
+    postrotate
+        # Reload nginx to reopen log files
+        systemctl reload nginx > /dev/null 2>&1 || true
+    endscript
+}

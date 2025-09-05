@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Contact Page Styles */
+        .contact-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .contact-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .contact-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: #34495e;
+        }
+        
+        .contact-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .contact-info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ecf0f1;
+        }
+        
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: #2c3e50;
+            flex-shrink: 0;
+        }
+        
+        .contact-info-item a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-info-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .response-time {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .faq-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            margin-top: 3rem;
+        }
+        
+        .faq-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #ecf0f1;
+            padding: 1.5rem 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #7f8c8d;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-arrow.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/music" class="nav-link">Music</a></li>
+                <li><a href="/shows" class="nav-link">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="contact-hero-content">
+                <h1 class="contact-title">Contact</h1>
+                <p class="contact-subtitle">
+                    Whether you're interested in collaboration, booking, or just want<br>
+                    to share how the music has touched you, I'd love to hear from you.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Contact Form Section -->
+        <section class="section">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="grid grid-cols-1" style="gap: var(--spacing-4xl);">
+                        <!-- Contact Form -->
+                        <div class="card" style="padding: var(--spacing-2xl);">
+                            <h2 style="font-family: var(--font-secondary); font-size: var(--font-size-3xl); color: var(--color-primary); margin-bottom: var(--spacing-lg); text-align: center;">
+                                Send a Message
+                            </h2>
+                            
+                            <form x-data="{ 
+                                name: '', 
+                                email: '', 
+                                subject: '', 
+                                message: '', 
+                                loading: false,
+                                sent: false,
+                                error: ''
+                            }" 
+                            @submit.prevent="
+                                loading = true;
+                                error = '';
+                                // Simulate form submission
+                                setTimeout(() => {
+                                    loading = false;
+                                    sent = true;
+                                    name = '';
+                                    email = '';
+                                    subject = '';
+                                    message = '';
+                                }, 1500);
+                            ">
+                                <div class="grid grid-cols-1" style="gap: var(--spacing-lg);">
+                                    <div class="grid grid-cols-1" style="gap: var(--spacing-lg);">
+                                        <div class="form-group">
+                                            <label class="form-label" for="name">Name *</label>
+                                            <input type="text" 
+                                                   id="name" 
+                                                   x-model="name" 
+                                                   class="form-input" 
+                                                   placeholder="Your full name" 
+                                                   required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email *</label>
+                                            <input type="email" 
+                                                   id="email" 
+                                                   x-model="email" 
+                                                   class="form-input" 
+                                                   placeholder="your@email.com" 
+                                                   required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label" for="subject">Subject *</label>
+                                        <select id="subject" x-model="subject" class="form-select" required>
+                                            <option value="">Choose a topic...</option>
+                                            <option value="collaboration">Collaboration Opportunity</option>
+                                            <option value="booking">Booking Inquiry</option>
+                                            <option value="licensing">Music Licensing</option>
+                                            <option value="fan">Fan Message</option>
+                                            <option value="press">Press & Media</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label" for="message">Message *</label>
+                                        <textarea id="message" 
+                                                  x-model="message" 
+                                                  class="form-textarea" 
+                                                  placeholder="Tell me about your project, idea, or just say hello..."
+                                                  required
+                                                  style="min-height: 120px;"></textarea>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" 
+                                                class="btn btn-primary btn-lg" 
+                                                :disabled="loading"
+                                                x-show="!sent">
+                                            <span x-show="!loading">Send Message</span>
+                                            <span x-show="loading">Sending...</span>
+                                        </button>
+                                        
+                                        <div x-show="sent" class="card" style="background-color: var(--color-success); color: white; padding: var(--spacing-lg); margin-top: var(--spacing-md);">
+                                            <h3 style="margin-bottom: var(--spacing-sm);">Message Sent!</h3>
+                                            <p style="margin: 0;">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div style="text-align: center;">
+                            <h3 style="font-family: var(--font-secondary); font-size: var(--font-size-2xl); color: var(--color-primary); margin-bottom: var(--spacing-lg);">
+                                Other Ways to Connect
+                            </h3>
+                            
+                            <div class="grid grid-cols-1" style="gap: var(--spacing-lg); max-width: 400px; margin: 0 auto;">
+                                <div class="card" style="padding: var(--spacing-lg); text-align: center;">
+                                    <h4 style="margin-bottom: var(--spacing-sm);">Email</h4>
+                                    <p style="color: var(--color-text-muted); margin: 0;">
+                                        <a href="mailto:hello@a-moody-place.com" class="text-accent">hello@a-moody-place.com</a>
+                                    </p>
+                                </div>
+                                
+                                <div class="card" style="padding: var(--spacing-lg); text-align: center;">
+                                    <h4 style="margin-bottom: var(--spacing-sm);">Social Media</h4>
+                                    <div class="flex gap-md justify-center">
+                                        <a href="https://instagram.com/amoodyplace" target="_blank" class="btn btn-outline btn-sm">Instagram</a>
+                                        <a href="https://www.youtube.com/@amoodyplace" target="_blank" class="btn btn-outline btn-sm">YouTube</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="card" style="padding: var(--spacing-lg); text-align: center;">
+                                    <h4 style="margin-bottom: var(--spacing-sm);">Response Time</h4>
+                                    <p style="color: var(--color-text-muted); margin: 0;">
+                                        I typically respond within 24-48 hours
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shows - A Moody Place</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Shows Page Styles */
+        .shows-hero {
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/images/falling_album.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+        
+        .shows-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .shows-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .shows-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .shows-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .shows-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .upcoming-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .shows-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .show-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .show-date {
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .show-month {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .show-day {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1;
+        }
+        
+        .show-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .show-venue {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .show-location {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        
+        .show-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .ticket-btn {
+            padding: 0.8rem 1.5rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        
+        .ticket-btn:hover {
+            background: #34495e;
+        }
+        
+        .ticket-btn.sold-out {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .more-info-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid #2c3e50;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .more-info-btn:hover {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .no-shows {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ecf0f1;
+        }
+        
+        .no-shows h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .no-shows p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .newsletter-signup {
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-input {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            min-width: 200px;
+        }
+        
+        .newsletter-btn {
+            padding: 0.8rem 1.5rem;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #34495e;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .footer p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .shows-hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .show-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .newsletter-signup {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .newsletter-input {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="background: white; border-bottom: 1px solid #ecf0f1;">
+        <nav class="nav-container">
+            <a href="/" class="logo" style="color: #2c3e50;">A Moody Place</a>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/music" class="nav-link">Music</a></li>
+                <li><a href="/shows" class="nav-link active">Shows</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/gallery" class="nav-link">Gallery</a></li>
+                <li><a href="/press-kit" class="nav-link">Press Kit</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="shows-hero">
+            <div class="shows-hero-content">
+                <h1 class="shows-title">Live Shows</h1>
+                <p class="shows-subtitle">
+                    Experience the intimate moments and raw emotions<br>
+                    of A Moody Place performed live.
+                </p>
+            </div>
+        </section>
+
+        <!-- Shows Section -->
+        <section class="shows-section">
+            <div class="shows-container">
+                <h2 class="upcoming-title">Upcoming Performances</h2>
+                
+                <!-- Currently no shows scheduled -->
+                <div class="no-shows">
+                    <h3>No Shows Currently Scheduled</h3>
+                    <p>We're working on booking new dates and would love to bring the music to your city. 
+                    Sign up for our newsletter to be the first to know about upcoming shows and tour announcements.</p>
+                    
+                    <div class="newsletter-signup">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email">
+                        <button class="newsletter-btn">Notify Me</button>
+                    </div>
+                </div>
+                
+                <!-- Example of what show cards would look like -->
+                <!--
+                <div class="shows-grid">
+                    <div class="show-card">
+                        <div class="show-date">
+                            <div class="show-month">Mar</div>
+                            <div class="show-day">15</div>
+                        </div>
+                        <div class="show-info">
+                            <h3>The Listening Room</h3>
+                            <div class="show-venue">Intimate Acoustic Set</div>
+                            <div class="show-location">Nashville, TN</div>
+                        </div>
+                        <div class="show-actions">
+                            <a href="#" class="ticket-btn">Get Tickets</a>
+                            <a href="#" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                    
+                    <div class="show-card">
+                        <div class="show-date">
+                            <div class="show-month">Apr</div>
+                            <div class="show-day">22</div>
+                        </div>
+                        <div class="show-info">
+                            <h3>The Mercury Lounge</h3>
+                            <div class="show-venue">Full Band Performance</div>
+                            <div class="show-location">New York, NY</div>
+                        </div>
+                        <div class="show-actions">
+                            <a href="#" class="ticket-btn sold-out">Sold Out</a>
+                            <a href="#" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <p>© 2025 A Moody Place. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

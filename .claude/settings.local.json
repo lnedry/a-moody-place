@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/larry/AI_Projects/Agents/**)",
+      "WebFetch(domain:www.instagram.com)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose restart:*)",
+      "Bash(docker-compose logs:*)",
+      "Bash(docker-compose:*)",
+      "Bash(docker system prune:*)",
+      "Bash(git remote add:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

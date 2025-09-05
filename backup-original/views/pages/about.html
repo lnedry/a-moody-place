@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Mood - Learn about the artist behind A Moody Place. Songwriter, topliner, and creative exploring introspective music and emotional connections.">
+    <title>About Mood - A Moody Place</title>
+    <link rel="canonical" href="https://a-moody-place.com/about">
+    
+    <!-- Page-specific styles for about -->
+    <style>
+        .about-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+            overflow: hidden;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+        
+        .about-hero-text {
+            max-width: 600px;
+        }
+        
+        .about-hero-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .about-hero-subtitle {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-light);
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .about-hero-image {
+            position: relative;
+            max-width: 500px;
+            justify-self: center;
+        }
+        
+        .hero-photo {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-xl);
+        }
+        
+        .hero-photo-overlay {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            right: var(--spacing-md);
+            bottom: var(--spacing-md);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-lg);
+            pointer-events: none;
+        }
+        
+        .story-section {
+            background-color: var(--color-background);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .story-content {
+            display: grid;
+            gap: var(--spacing-4xl);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-block {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .story-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .story-text {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text);
+            text-align: left;
+        }
+        
+        .story-text:first-letter {
+            font-family: var(--font-secondary);
+            font-size: 3.5em;
+            font-weight: var(--font-weight-bold);
+            line-height: 0.9;
+            float: left;
+            margin: 0.1em 0.1em 0.05em 0;
+            color: var(--color-primary);
+        }
+        
+        .highlights-section {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .highlight-card {
+            background-color: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-lg);
+            background-color: var(--color-accent);
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .highlight-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-primary);
+        }
+        
+        .highlight-description {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .values-section {
+            background-color: var(--color-background);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .values-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .values-list {
+            display: grid;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .value-quote {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-2xl);
+            font-style: italic;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+        
+        .value-quote::before {
+            content: '"';
+            font-size: 1.5em;
+            color: var(--color-accent);
+            position: absolute;
+            left: -0.3em;
+            top: -0.1em;
+        }
+        
+        .value-quote::after {
+            content: '"';
+            font-size: 1.5em;
+            color: var(--color-accent);
+            position: absolute;
+            right: -0.3em;
+            top: -0.1em;
+        }
+        
+        .value-description {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            max-width: 600px;
+        }
+        
+        .gallery-section {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: var(--spacing-lg);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .contact-cta {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            padding: var(--spacing-5xl) 0;
+            text-align: center;
+        }
+        
+        .contact-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-cta-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-cta-text {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.9;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .about-hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-4xl);
+                align-items: center;
+            }
+            
+            .about-hero-title {
+                font-size: var(--font-size-6xl);
+            }
+            
+            .highlights-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .values-list {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: var(--spacing-4xl);
+                text-align: left;
+            }
+            
+            .value-item {
+                align-items: flex-start;
+                text-align: left;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .highlights-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+            
+            .gallery-item:nth-child(1) img {
+                height: 510px;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body x-data="{ currentSection: 'about' }">
+    
+    <!-- About Hero Section -->
+    <section class="about-hero" id="about">
+        <div class="container">
+            <div class="about-hero-content">
+                <div class="about-hero-text">
+                    <h1 class="about-hero-title">The Artist Behind the Music</h1>
+                    <p class="about-hero-subtitle">
+                        I'm Mood, a songwriter and topliner creating introspective music that explores 
+                        the depths of human emotion and connection. My journey is about finding beauty 
+                        in vulnerability and sharing authentic stories through sound.
+                    </p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="/music" class="btn btn-primary btn-lg">
+                            Listen to My Music
+                        </a>
+                        <a href="/contact" class="btn btn-outline btn-lg">
+                            Work Together
+                        </a>
+                    </div>
+                </div>
+                <div class="about-hero-image">
+                    <img src="/images/mood-hero-portrait.jpg" 
+                         alt="Mood - Artist portrait"
+                         class="hero-photo"
+                         loading="eager">
+                    <div class="hero-photo-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Artist Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-block fade-in">
+                    <h2 class="story-title">My Musical Journey</h2>
+                    <div class="story-text">
+                        Music found me in the quiet moments. Growing up, I discovered that melodies could capture feelings I couldn't put into words, and lyrics became my way of making sense of the world. What started as late-night sessions with a guitar and a notebook has evolved into a lifelong pursuit of authentic expression through sound.
+                    </div>
+                    <div class="story-text">
+                        As a songwriter and topliner, I specialize in crafting melodies that resonate with the human experience. My approach centers on vulnerability and connection—creating music that feels both deeply personal and universally relatable. Whether I'm writing for other artists or developing my own material, every song is an opportunity to explore the complexity of emotion and create moments of understanding.
+                    </div>
+                </div>
+                
+                <div class="story-block fade-in">
+                    <h2 class="story-title">Creative Philosophy</h2>
+                    <div class="story-text">
+                        I believe that the most powerful music comes from genuine places. In a world that often feels disconnected, I aim to create sonic spaces where people can feel understood, less alone, and more connected to their own emotions. My writing process is deeply introspective, drawing from personal experiences while reaching for universal truths.
+                    </div>
+                    <div class="story-text">
+                        Collaboration is at the heart of what I do. Working with producers, fellow songwriters, and artists from different backgrounds has taught me that the best music emerges when creative minds come together with openness and respect. Every collaboration is a chance to learn, grow, and discover new dimensions of storytelling through music.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Highlights Section -->
+    <section class="highlights-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">What Defines My Work</h2>
+                <p class="section-subtitle">
+                    The elements that shape my approach to music creation and collaboration.
+                </p>
+            </div>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card fade-in">
+                    <div class="highlight-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <h3 class="highlight-title">Emotional Authenticity</h3>
+                    <p class="highlight-description">
+                        Every song is rooted in genuine emotion and real experiences, 
+                        creating music that resonates on a deep, personal level.
+                    </p>
+                </div>
+                
+                <div class="highlight-card fade-in">
+                    <div class="highlight-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="highlight-title">Collaborative Spirit</h3>
+                    <p class="highlight-description">
+                        I thrive in creative partnerships, bringing out the best in 
+                        fellow artists and producers through open, respectful collaboration.
+                    </p>
+                </div>
+                
+                <div class="highlight-card fade-in">
+                    <div class="highlight-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H19v2h-1.5v17.5c0 .83-.67 1.5-1.5 1.5H8c-.83 0-1.5-.67-1.5-1.5V4H5V2h4.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5H17v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="highlight-title">Introspective Storytelling</h3>
+                    <p class="highlight-description">
+                        My lyrics explore the nuances of human experience, finding 
+                        beauty in vulnerability and strength in honest reflection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Values/Philosophy Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="values-content">
+                <h2 class="section-title">Core Values</h2>
+                <p class="section-subtitle">
+                    The principles that guide my creative process and professional relationships.
+                </p>
+                
+                <div class="values-list">
+                    <div class="value-item fade-in">
+                        <div class="value-quote">Music is connection</div>
+                        <p class="value-description">
+                            I believe that music's greatest power lies in its ability to connect us—to ourselves, 
+                            to others, and to experiences we thought were ours alone. Every song is an opportunity 
+                            to build bridges between hearts and minds.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item fade-in">
+                        <div class="value-quote">Vulnerability breeds strength</div>
+                        <p class="value-description">
+                            There's incredible courage in being open about our struggles, fears, and hopes. 
+                            The songs that have moved me most are those that dare to be vulnerable, 
+                            and that's the standard I hold myself to in my own writing.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item fade-in">
+                        <div class="value-quote">Collaboration creates magic</div>
+                        <p class="value-description">
+                            Some of my most meaningful work has emerged from creative partnerships. 
+                            When artists come together with mutual respect and shared vision, 
+                            we can create something greater than any of us could achieve alone.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item fade-in">
+                        <div class="value-quote">Every story matters</div>
+                        <p class="value-description">
+                            Whether it's a moment of heartbreak, a flash of joy, or a quiet realization, 
+                            every human experience has the potential to become a song that matters to someone. 
+                            I'm honored to be a part of telling those stories.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Moments & Memories</h2>
+                <p class="section-subtitle">
+                    A visual journey through the creative process, collaborations, and life behind the music.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in" 
+                     x-data="{ showOverlay: false }"
+                     @mouseenter="showOverlay = true"
+                     @mouseleave="showOverlay = false">
+                    <img src="/images/studio-session-1.jpg" 
+                         alt="Studio session - creative process"
+                         loading="lazy">
+                    <div class="gallery-overlay" x-show="showOverlay">
+                        <h4>In the Studio</h4>
+                        <p>Late night creative sessions where magic happens</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="/images/collaboration-2.jpg" 
+                         alt="Collaboration with fellow artists"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Creative Collaboration</h4>
+                        <p>Working with talented artists and producers</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="/images/writing-process.jpg" 
+                         alt="Songwriting process"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Writing Process</h4>
+                        <p>Where lyrics and melodies come to life</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="/images/performance-moment.jpg" 
+                         alt="Live performance moment"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Live Moments</h4>
+                        <p>Sharing music with audiences who feel it</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="/images/behind-scenes.jpg" 
+                         alt="Behind the scenes creative work"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Behind the Scenes</h4>
+                        <p>The quiet moments that shape the music</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="/images/inspiration-moment.jpg" 
+                         alt="Finding inspiration in everyday moments"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Finding Inspiration</h4>
+                        <p>Music is everywhere if you listen</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: var(--spacing-3xl);">
+                <a href="/gallery" class="btn btn-outline">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="contact-cta-content">
+                <h2 class="contact-cta-title">Let's Create Something Beautiful</h2>
+                <p class="contact-cta-text">
+                    Whether you're an artist looking for a collaborator, a producer seeking 
+                    meaningful lyrics, or simply someone who connects with this music, 
+                    I'd love to hear from you.
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <a href="/contact" class="btn btn-secondary btn-lg">
+                        Start a Conversation
+                    </a>
+                    <a href="/music" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">
+                        Explore My Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Page JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Gallery lightbox functionality (basic implementation)
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    if (img) {
+                        // Basic lightbox - could be enhanced with a proper lightbox library
+                        const lightbox = document.createElement('div');
+                        lightbox.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0,0,0,0.9);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 9999;
+                            cursor: pointer;
+                        `;
+                        
+                        const lightboxImg = document.createElement('img');
+                        lightboxImg.src = img.src;
+                        lightboxImg.alt = img.alt;
+                        lightboxImg.style.cssText = `
+                            max-width: 90%;
+                            max-height: 90%;
+                            border-radius: var(--border-radius-lg);
+                        `;
+                        
+                        lightbox.appendChild(lightboxImg);
+                        document.body.appendChild(lightbox);
+                        
+                        lightbox.addEventListener('click', function() {
+                            document.body.removeChild(lightbox);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

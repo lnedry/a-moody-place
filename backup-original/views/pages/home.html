@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Moody Place - Official website of artist Mood. Songwriter, artist, and topliner creating introspective music and emotional connections.">
+    <title>A Moody Place - Official Website of Artist Mood</title>
+    <link rel="canonical" href="https://a-moody-place.com/">
+    
+    <!-- Extend main layout -->
+    <style>
+        /* Page-specific styles for home */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        .hero-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-6xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-light);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-2xl);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-lg);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        .hero-player {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--box-shadow-xl);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+        
+        .featured-section {
+            padding: var(--spacing-5xl) 0;
+            background-color: var(--color-background);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-4xl);
+        }
+        
+        .section-title {
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .music-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .track-card {
+            display: flex;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            transition: var(--transition);
+        }
+        
+        .track-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .track-artwork {
+            width: 100px;
+            height: 100px;
+            background-color: var(--color-background-alt);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .track-artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .track-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .track-header h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .track-meta {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .track-description {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .track-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .play-btn:hover {
+            background-color: var(--color-accent-dark);
+            transform: translateY(-1px);
+        }
+        
+        .streaming-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .streaming-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-xs);
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .streaming-link:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+        
+        .updates-section {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-5xl) 0;
+        }
+        
+        .updates-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .update-card {
+            background-color: var(--color-background);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .update-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .update-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--color-background-dark);
+            overflow: hidden;
+        }
+        
+        .update-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .update-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .update-meta {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .update-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .update-excerpt {
+            color: var(--color-text-light);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .read-more {
+            color: var(--color-accent);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        .social-section {
+            padding: var(--spacing-5xl) 0;
+            background-color: var(--color-background);
+        }
+        
+        .social-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .social-embed {
+            background-color: var(--color-background-alt);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: var(--font-size-6xl);
+            }
+            
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .hero-cta {
+                flex-wrap: nowrap;
+            }
+            
+            .track-artwork {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .music-grid {
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            }
+            
+            .updates-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-content {
+                padding: 0 var(--spacing-2xl);
+            }
+            
+            .updates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be included by layout -->
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">A Moody Place</h1>
+            <p class="hero-subtitle">
+                Creating introspective music and emotional connections.<br>
+                Songwriter, artist, and topliner exploring the depths of human experience.
+            </p>
+            
+            <div class="hero-actions">
+                <!-- Featured Track Player -->
+                <div class="hero-player" 
+                     x-data="{ 
+                        isPlaying: false, 
+                        currentTime: 0, 
+                        duration: 30,
+                        trackTitle: 'Latest Release',
+                        trackArtist: 'Mood'
+                     }">
+                    <div class="player-track-info">
+                        <div class="player-artwork">
+                            <img src="/images/latest-track-artwork.jpg" 
+                                 alt="Latest track artwork"
+                                 loading="lazy">
+                        </div>
+                        <div class="player-track-details">
+                            <h4 x-text="trackTitle">Latest Release</h4>
+                            <p x-text="trackArtist">Mood</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button class="player-btn" aria-label="Previous track">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="player-btn primary" 
+                                @click="isPlaying = !isPlaying"
+                                :aria-label="isPlaying ? 'Pause' : 'Play'">
+                            <svg x-show="!isPlaying" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg x-show="isPlaying" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="player-btn" aria-label="Next track">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="player-progress">
+                        <div class="progress-bar" 
+                             @click="currentTime = ($event.offsetX / $el.offsetWidth) * duration">
+                            <div class="progress-fill" 
+                                 :style="`width: ${(currentTime / duration) * 100}%`"></div>
+                        </div>
+                        <div class="progress-time">
+                            <span x-text="`${Math.floor(currentTime / 60)}:${String(Math.floor(currentTime % 60)).padStart(2, '0')}`">0:00</span>
+                            <span x-text="`${Math.floor(duration / 60)}:${String(Math.floor(duration % 60)).padStart(2, '0')}`">0:30</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call to Action Buttons -->
+                <div class="hero-cta">
+                    <a href="/music" class="btn btn-primary btn-lg">
+                        Explore Music
+                    </a>
+                    <a href="/about" class="btn btn-outline btn-lg">
+                        About Mood
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Music Section -->
+    <section class="featured-section" id="featured-music">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Music</h2>
+                <p class="section-subtitle">
+                    Discover the latest releases and fan favorites that showcase the introspective journey of sound and emotion.
+                </p>
+            </div>
+            
+            <div class="music-grid">
+                <!-- Featured Track 1 -->
+                <div class="track-card" 
+                     x-data="{ isPlaying: false }"
+                     data-track-id="1">
+                    <div class="track-artwork">
+                        <img src="/images/track-1-artwork.jpg" 
+                             alt="Track artwork"
+                             loading="lazy">
+                    </div>
+                    <div class="track-info">
+                        <div class="track-header">
+                            <h3>Midnight Reflections</h3>
+                            <div class="track-meta">
+                                Released March 2025 • 3:45
+                            </div>
+                            <p class="track-description">
+                                A contemplative journey through late-night thoughts and emotions, 
+                                exploring the quiet moments that define our inner landscape.
+                            </p>
+                        </div>
+                        <div class="track-actions">
+                            <button class="play-btn" 
+                                    @click="isPlaying = !isPlaying"
+                                    :aria-label="isPlaying ? 'Pause' : 'Play'">
+                                <svg x-show="!isPlaying" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg x-show="isPlaying" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                                <span x-text="isPlaying ? 'Pause' : 'Play'">Play</span>
+                            </button>
+                            <div class="streaming-links">
+                                <a href="https://open.spotify.com/track/example" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                                    </svg>
+                                    Spotify
+                                </a>
+                                <a href="https://music.apple.com/album/example" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                    </svg>
+                                    Apple Music
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=example" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                    YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Track 2 -->
+                <div class="track-card" 
+                     x-data="{ isPlaying: false }"
+                     data-track-id="2">
+                    <div class="track-artwork">
+                        <img src="/images/track-2-artwork.jpg" 
+                             alt="Track artwork"
+                             loading="lazy">
+                    </div>
+                    <div class="track-info">
+                        <div class="track-header">
+                            <h3>Echoes of Tomorrow</h3>
+                            <div class="track-meta">
+                                Released February 2025 • 4:12
+                            </div>
+                            <p class="track-description">
+                                An optimistic exploration of future possibilities, 
+                                weaving hope and uncertainty into a tapestry of sound.
+                            </p>
+                        </div>
+                        <div class="track-actions">
+                            <button class="play-btn" 
+                                    @click="isPlaying = !isPlaying"
+                                    :aria-label="isPlaying ? 'Pause' : 'Play'">
+                                <svg x-show="!isPlaying" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg x-show="isPlaying" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                                <span x-text="isPlaying ? 'Pause' : 'Play'">Play</span>
+                            </button>
+                            <div class="streaming-links">
+                                <a href="https://open.spotify.com/track/example2" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                                    </svg>
+                                    Spotify
+                                </a>
+                                <a href="https://music.apple.com/album/example2" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                    </svg>
+                                    Apple Music
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=example2" 
+                                   class="streaming-link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                    YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="/music" class="btn btn-primary">View All Music</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recent Updates Section -->
+    <section class="updates-section" id="recent-updates">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recent Updates</h2>
+                <p class="section-subtitle">
+                    Stay connected with the latest news, releases, and behind-the-scenes insights from the creative journey.
+                </p>
+            </div>
+            
+            <div class="updates-grid">
+                <!-- Blog Post Preview -->
+                <article class="update-card">
+                    <div class="update-image">
+                        <img src="/images/blog-studio-session.jpg" 
+                             alt="Studio session behind the scenes"
+                             loading="lazy">
+                    </div>
+                    <div class="update-content">
+                        <div class="update-meta">
+                            Blog Post • March 15, 2025
+                        </div>
+                        <h3 class="update-title">Behind the Scenes: Recording "Midnight Reflections"</h3>
+                        <p class="update-excerpt">
+                            An intimate look at the creative process behind the latest single, 
+                            from initial inspiration to final mix...
+                        </p>
+                        <a href="/blog/recording-midnight-reflections" class="read-more">
+                            Read More →
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- Show Announcement -->
+                <article class="update-card">
+                    <div class="update-image">
+                        <img src="/images/show-announcement.jpg" 
+                             alt="Upcoming show announcement"
+                             loading="lazy">
+                    </div>
+                    <div class="update-content">
+                        <div class="update-meta">
+                            Show Announcement • March 10, 2025
+                        </div>
+                        <h3 class="update-title">Intimate Acoustic Show Announced</h3>
+                        <p class="update-excerpt">
+                            Join me for an intimate acoustic performance at The Listening Room, 
+                            featuring new songs and stripped-down favorites...
+                        </p>
+                        <a href="/shows" class="read-more">
+                            Get Tickets →
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- Collaboration News -->
+                <article class="update-card">
+                    <div class="update-image">
+                        <img src="/images/collaboration-news.jpg" 
+                             alt="Collaboration announcement"
+                             loading="lazy">
+                    </div>
+                    <div class="update-content">
+                        <div class="update-meta">
+                            Music News • March 5, 2025
+                        </div>
+                        <h3 class="update-title">New Collaboration in the Works</h3>
+                        <p class="update-excerpt">
+                            Excited to share that I'm working with some incredible artists on 
+                            a special project. More details coming soon...
+                        </p>
+                        <a href="/blog/new-collaboration" class="read-more">
+                            Learn More →
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center">
+                <a href="/blog" class="btn btn-outline">View All Updates</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Media Section -->
+    <section class="social-section" id="social-media">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stay Connected</h2>
+                <p class="section-subtitle">
+                    Follow the journey on social media for daily inspiration, 
+                    studio updates, and personal moments behind the music.
+                </p>
+            </div>
+            
+            <div class="social-grid">
+                <!-- Instagram Feed -->
+                <div class="social-embed">
+                    <div>
+                        <h3>Instagram</h3>
+                        <p>@amoodyplace</p>
+                        <p class="text-muted">Follow for daily inspiration and studio updates</p>
+                        <a href="https://instagram.com/amoodyplace" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn btn-primary">
+                            Follow on Instagram
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- YouTube Latest -->
+                <div class="social-embed">
+                    <div>
+                        <h3>YouTube</h3>
+                        <p>Latest music videos and performances</p>
+                        <p class="text-muted">Subscribe for exclusive content</p>
+                        <a href="https://www.youtube.com/@amoodyplace" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn btn-primary">
+                            Subscribe on YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Signup Section -->
+    <section class="section" style="background-color: var(--color-background-alt);">
+        <div class="container text-center">
+            <div class="section-header">
+                <h2 class="section-title">Stay in the Loop</h2>
+                <p class="section-subtitle">
+                    Get exclusive updates on new releases, shows, and behind-the-scenes content 
+                    delivered directly to your inbox.
+                </p>
+            </div>
+            
+            <form class="newsletter-form" 
+                  style="max-width: 500px; margin: 0 auto;"
+                  x-data="{ email: '', loading: false, message: '' }"
+                  @submit.prevent="
+                    loading = true;
+                    message = '';
+                    fetch('/api/newsletter', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email, source: 'home_hero' })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            email = '';
+                            message = 'Thank you for subscribing! Check your email to confirm.';
+                        } else {
+                            message = 'Something went wrong. Please try again.';
+                        }
+                    })
+                    .catch(error => {
+                        message = 'Something went wrong. Please try again.';
+                    })
+                    .finally(() => loading = false);
+                  ">
+                <div class="newsletter-input-group" style="margin-bottom: var(--spacing-md);">
+                    <input type="email" 
+                           x-model="email"
+                           placeholder="Your email address"
+                           required
+                           class="newsletter-input form-input"
+                           style="border-radius: var(--border-radius) 0 0 var(--border-radius);"
+                           aria-label="Email address for newsletter">
+                    <button type="submit" 
+                            :disabled="loading"
+                            class="btn btn-primary newsletter-button"
+                            style="border-radius: 0 var(--border-radius) var(--border-radius) 0;"
+                            aria-label="Subscribe to newsletter">
+                        <span x-show="!loading">Subscribe</span>
+                        <span x-show="loading">Subscribing...</span>
+                    </button>
+                </div>
+                <p class="newsletter-note" x-show="message" x-text="message"></p>
+                <p class="newsletter-note" x-show="!message">
+                    Join thousands of listeners for exclusive content and early access to new releases.
+                </p>
+            </form>
+        </div>
+    </section>
+    
+    <!-- JavaScript for page interactivity -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // Initialize hero player with sample data
+            Alpine.data('heroPlayer', () => ({
+                isPlaying: false,
+                currentTime: 0,
+                duration: 30,
+                trackTitle: 'Latest Release',
+                trackArtist: 'Mood',
+                
+                togglePlay() {
+                    this.isPlaying = !this.isPlaying;
+                    if (this.isPlaying) {
+                        this.startProgress();
+                    }
+                },
+                
+                startProgress() {
+                    if (!this.isPlaying) return;
+                    
+                    const interval = setInterval(() => {
+                        if (!this.isPlaying || this.currentTime >= this.duration) {
+                            clearInterval(interval);
+                            if (this.currentTime >= this.duration) {
+                                this.isPlaying = false;
+                                this.currentTime = 0;
+                            }
+                            return;
+                        }
+                        this.currentTime += 0.1;
+                    }, 100);
+                }
+            }));
+        });
+        
+        // Intersection observer for animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe cards and sections
+            document.querySelectorAll('.track-card, .update-card, .section-header').forEach(el => {
+                observer.observe(el);
+            });
+        };
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', observeElements);
+    </script>
+</body>
+</html>
