@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build: .
@@ -9,18 +7,18 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+      # Database connection to host MariaDB (configured via .env)
+    env_file:
+      - .env
     restart: unless-stopped
     volumes:
-      # Mount logs directory for persistence (optional)
+      # Mount logs directory for persistence
       - ./logs:/app/logs
+    # Use host network to connect to Plesk's MariaDB
+    network_mode: host
     healthcheck:
       test: ["CMD", "node", "healthcheck.js"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
-
-# Optional: Add nginx reverse proxy for production
-# networks:
-#   default:
-#     name: a-moody-place-network

@@ -2407,8 +2407,8 @@ module.exports = new ImageProcessor();
   "license": "UNLICENSED",
   "private": true,
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -2545,4 +2545,4 @@ This technical specification provides the comprehensive foundation needed to beg
 
 **Document Status**: Ready for Development  
 **Review Required**: Database schema validation, security configuration review  
-**Dependencies**: MariaDB server, Node.js 18+, Nginx, SSL certificate
+**Dependencies**: MariaDB server, Node.js 22+, Nginx, SSL certificate

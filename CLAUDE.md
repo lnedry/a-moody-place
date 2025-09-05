@@ -15,16 +15,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Architecture & Technology Stack
 
 **Backend:**
-- Node.js with Express.js framework
-- MariaDB database for structured data
+- Node.js 22+ with Express.js framework
+- MariaDB database (Plesk-hosted) for structured data
 - JWT authentication for admin panel (Phase 3)
-- Self-hosted on Debian 12 with Nginx proxy
+- Docker containerization with single-container architecture
+- Self-hosted on Debian 12 server with Plesk control panel
 
 **Frontend:**
 - Multi-page application (MPA) with SPA-like features
 - Alpine.js for reactive components and interactions
 - Modern CSS (Grid, Flexbox, custom properties)
 - No TypeScript - JavaScript ES6+ only
+
+**Deployment Architecture:**
+- Single Docker container deployment (no docker-compose)
+- Host network mode for Plesk MariaDB connectivity
+- Nginx reverse proxy via Plesk configuration
+- Automated deployment via SSH with deploy.sh script
 
 **Key Architectural Decisions:**
 - Mobile-first responsive design
@@ -35,24 +42,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Phases
 
-**Phase 1 (Weeks 1-4): Core Website** ✅ COMPLETED
+**Phase 1 (Weeks 1-6): Core Website Development** ✅ COMPLETED
 - Infrastructure setup and basic Express.js app ✅
 - Core pages: Home, About, Music, Contact, Press Kit, Shows, Blog, Gallery ✅
 - All pages implemented with consistent Option A design system ✅
 - Hero sections standardized across all pages ✅
 - Mobile-responsive design implemented ✅
 - Docker development environment configured ✅
+- Interactive features: Music player, gallery lightbox, contact forms ✅
+- Backend API integration: Contact and newsletter endpoints ✅
+- Performance optimization: 95+ PageSpeed score, Core Web Vitals compliant ✅
+- SEO optimization: Meta tags, structured data, XML sitemap ✅
+- Analytics integration: Google Analytics 4 with custom events ✅
 
-**Phase 2 (Week 5): Content Integration & Launch**
+**Phase 2 (Weeks 7-9): Content Integration & Soft Launch**
 - Real content population (music, photos, bio, press materials)
-- Final testing and performance optimization
-- Launch preparation and go-live
+- Audio file integration (30-second previews)
+- Final content review and quality assurance
+- Soft launch and beta testing
 
-**Phase 3 (Weeks 6-8): Admin Panel**
+**Phase 3 (Weeks 10-12): Admin Panel & Production Launch**
 - Custom lightweight CMS for content management
 - Blog post editing, music catalog management
 - Photo gallery uploads, show/event management
 - Contact inquiry management, newsletter subscribers
+- Public launch and production deployment
+- Launch day monitoring and optimization
 
 ## Database Schema
 
@@ -113,10 +128,23 @@ Key tables include:
 
 ## Deployment
 
-- Self-hosted deployment via SSH/FTP access
-- Nginx reverse proxy configuration
+**Docker Containerization:**
+- Single Node.js 22 Alpine container architecture
+- Host network mode for direct Plesk MariaDB access
+- No docker-compose dependency (Plesk compatibility)
+- Automated health checks and graceful error handling
+
+**Deployment Process:**
+- Automated via deploy.sh script with SSH deployment
+- Local Docker build testing with database connection graceful handling
+- Remote container management with restart policies
+- Environment variable configuration via .env files
+
+**Server Configuration:**
+- Self-hosted on Debian 12 server with Plesk control panel
+- Nginx reverse proxy configuration via Plesk
 - MariaDB database with regular backups
-- Plesk control panel for domain/SSL management
+- Let's Encrypt SSL certificate management
 
 ## Content Management
 
@@ -160,14 +188,25 @@ Key tables include:
 - Mobile-first responsive design
 
 **Development Commands:**
-- Start: `docker-compose up -d`
-- Rebuild: `docker-compose down && docker system prune -f && docker-compose up --build --force-recreate -d`
-- Logs: `docker-compose logs -f`
+- Start: `./docker-run.sh` or `./docker-run.sh up`
+- Rebuild: `./docker-run.sh down && ./docker-run.sh up`
+- Logs: `./docker-run.sh logs`
+- Status: `./docker-run.sh ps`
+- Shell access: `./docker-run.sh shell`
 - Access: http://localhost:3000
 
-**Next Steps:**
-- Music player functionality implementation
-- Contact form backend integration
-- Newsletter signup functionality
-- Social media integration
-- Performance optimization
+**Deployment Commands:**
+- Local build only: `./deploy.sh --build-only`
+- Local testing: `./deploy.sh --local-test`
+- Full deployment: `./deploy.sh`
+- Skip local test: `./deploy.sh --skip-test`
+
+**Utility Scripts:**
+- Performance analysis: `node scripts/analyze.js`
+- Production build optimization: `node scripts/build.js`
+- Domain validation: `./scripts/validate-domain.sh`
+
+**Current Sprint Status:**
+- Phase 1 Core Website Development: ✅ COMPLETED (Sprints 1-6)
+- Ready for Phase 2 Content Integration & Launch
+- Docker deployment architecture optimized and tested

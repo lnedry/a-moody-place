@@ -257,6 +257,10 @@ const staticOptions = {
   index: false // Disable directory indexing
 };
 
+app.use('/css', express.static(path.join(__dirname, 'public/css'), staticOptions));
+app.use('/js', express.static(path.join(__dirname, 'public/js'), staticOptions));
+app.use('/images', express.static(path.join(__dirname, 'public/images'), staticOptions));
+app.use('/audio', express.static(path.join(__dirname, 'public/audio'), staticOptions));
 app.use('/static', express.static(path.join(__dirname, 'public'), staticOptions));
 
 // Serve uploaded files with different caching strategy
@@ -317,7 +321,15 @@ app.use('/api/admin/login', authLimiter);
 app.use('/api/admin/register', authLimiter);
 
 // Import route handlers
-// Note: Controller files need to be created to complete the API implementation
+// Contact form routes
+try {
+  const contactRoutes = require('./routes/contact');
+  app.use('/api/contact', contactRoutes);
+} catch (error) {
+  console.warn('Contact routes not loaded:', error.message);
+}
+
+// API routes
 try {
   const apiRoutes = require('./routes/api');
   app.use('/api', apiRoutes);

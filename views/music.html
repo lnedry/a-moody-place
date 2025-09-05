@@ -3,9 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music - A Moody Place</title>
+    <title>Music by Mood - Listen to 'Falling' & 'Moog Play' | A Moody Place</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Listen to introspective indie music by artist Mood. Stream debut single 'Falling' (2025) and upcoming 'Moog Play' on Spotify, Apple Music, and YouTube. Emotional depth meets sophisticated production.">
+    <meta name="keywords" content="Mood music, Falling single, Moog Play, indie music, introspective songs, emotional music, A Moody Place, stream music, Spotify, Apple Music, YouTube music">
+    <meta name="author" content="Mood">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://a-moody-place.com/music">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="music.album">
+    <meta property="og:url" content="https://a-moody-place.com/music">
+    <meta property="og:title" content="Music by Mood - Falling & Moog Play | A Moody Place">
+    <meta property="og:description" content="Stream introspective indie music by artist Mood. Listen to debut single 'Falling' and upcoming 'Moog Play' - exploring human emotion through authentic storytelling.">
+    <meta property="og:image" content="https://a-moody-place.com/images/og-music.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mood - Music Collection - Falling and Moog Play">
+    <meta property="og:site_name" content="A Moody Place">
+    <meta property="music:musician" content="Mood">
+    <meta property="music:song" content="Falling">
+    <meta property="music:release_date" content="2025-06-13">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@amoodyplace">
+    <meta name="twitter:creator" content="@amoodyplace">
+    <meta name="twitter:title" content="Music by Mood - Falling & Moog Play">
+    <meta name="twitter:description" content="Stream introspective indie music exploring human emotion. Listen to 'Falling' and upcoming 'Moog Play' by artist Mood.">
+    <meta name="twitter:image" content="https://a-moody-place.com/images/og-music.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicRecording",
+      "@id": "https://a-moody-place.com/music#falling",
+      "name": "Falling",
+      "description": "Mood's debut release captures raw emotions of vulnerability and self-discovery, exploring the beauty in life's quiet moments.",
+      "duration": "PT3M45S",
+      "datePublished": "2025-06-13",
+      "genre": ["Indie", "Alternative", "Introspective"],
+      "byArtist": {
+        "@type": "MusicGroup",
+        "name": "Mood",
+        "url": "https://a-moody-place.com"
+      },
+      "inAlbum": {
+        "@type": "MusicAlbum",
+        "name": "Falling",
+        "albumReleaseType": "http://schema.org/SingleRelease"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://a-moody-place.com/audio/falling-preview.mp3",
+        "encodingFormat": "audio/mpeg",
+        "duration": "PT30S"
+      },
+      "sameAs": [
+        "https://open.spotify.com/track/falling",
+        "https://music.apple.com/us/album/falling",
+        "https://www.youtube.com/watch?v=falling"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://a-moody-place.com/music",
+      "url": "https://a-moody-place.com/music",
+      "name": "Music by Mood - A Moody Place",
+      "description": "Explore the musical journey of artist Mood with introspective indie songs including 'Falling' and upcoming 'Moog Play'.",
+      "mainEntity": {
+        "@type": "MusicGroup",
+        "name": "Mood",
+        "genre": ["Indie", "Alternative"],
+        "album": [
+          {
+            "@type": "MusicAlbum",
+            "name": "Falling",
+            "datePublished": "2025-06-13"
+          },
+          {
+            "@type": "MusicAlbum",
+            "name": "Moog Play",
+            "datePublished": "2025-09-12"
+          }
+        ]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://a-moody-place.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Music",
+            "item": "https://a-moody-place.com/music"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'page_title': 'Music - A Moody Place',
+        'page_location': window.location.href,
+        'content_group1': 'Music'
+      });
+      
+      // Track music page views
+      gtag('event', 'page_view', {
+        'page_title': 'Music - A Moody Place',
+        'page_location': window.location.href,
+        'content_group1': 'Music'
+      });
+    </script>
+    
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script defer src="/js/music-player.js"></script>
     <style>
         /* Music Page Styles */
         .music-hero {
@@ -138,6 +270,23 @@
         .stream-btn:hover {
             background: #34495e;
             transform: translateY(-1px);
+        }
+        
+        .play-btn {
+            border: none;
+            cursor: pointer;
+        }
+        
+        .play-btn.loading {
+            opacity: 0.7;
+        }
+        
+        .play-btn.playing {
+            background: #27ae60 !important;
+        }
+        
+        .play-btn.error {
+            background: #e74c3c !important;
         }
         
         .stream-btn.primary {
@@ -277,19 +426,37 @@
                                     through sound and emotion.
                                 </p>
                                 <div class="streaming-links">
-                                    <div class="stream-btn primary" style="background: #95a5a6; cursor: not-allowed;">
+                                    <a href="https://api.ffm.to/sl/e/ps/moogplay?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMzguMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxMzguMC4wLjAiLCJtYWpvciI6IjEzOCJ9LCJjcHUiOnt9LCJkZXZpY2UiOnsibW9kZWwiOiJNYWNpbnRvc2giLCJ2ZW5kb3IiOiJBcHBsZSJ9LCJlbmdpbmUiOnsibmFtZSI6IkJsaW5rIiwidmVyc2lvbiI6IjEzOC4wLjAuMCJ9LCJvcyI6eyJuYW1lIjoibWFjT1MiLCJ2ZXJzaW9uIjoiMTAuMTUuNyJ9fSwiY2xpZW50Ijp7InJpZCI6IjMwZmUzZWNkLTYzZjMtNDM4NC1iNmFhLWI0ODFiOTg4NjJkOSIsInNpZCI6ImY2NTgwNzdmLWM4OWEtNGNjYy04M2IwLTE2ZWQ3Mjc0ZWJiNyIsImlwIjoiMTcyLjE0LjE4Ni4yNDQiLCJyZWYiOiJodHRwczovL2xpbmt0ci5lZS8iLCJob3N0IjoibXVzaWMuZW1waS5yZSIsImxhbmciOiJlbi1VUyIsImlwQ291bnRyeSI6IlVTIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IlVTIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiI5OGEyNTEwNi00OTA0LTRhZmMtOWNlMS05OTMzMjQ4NWI3NmYiLCJpZCI6IjY4YThjNThlNDAwMDAwMGMwMDkzNjJhOCIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FjY291bnRzLnNwb3RpZnkuY29tL2F1dGhvcml6ZT9jbGllbnRfaWQ9NjZkM2NkYjQ0ODA3NGEwZDg4ZTliMDhiYWFmMmYzZDcmcmVzcG9uc2VfdHlwZT1jb2RlJnJlZGlyZWN0X3VyaT1odHRwcyUzQSUyRiUyRmFwaS5mZm0udG8lMkZ3ZWJob29rJTJGc3BvdGlmeSUyRmF1dGhvcml6ZSZzY29wZT11c2VyLXJlYWQtcHJpdmF0ZSUyMHVzZXItcmVhZC1iaXJ0aGRhdGUlMjB1c2VyLXJlYWQtZW1haWwlMjB1c2VyLWxpYnJhcnktbW9kaWZ5JTIwdXNlci1saWJyYXJ5LXJlYWQlMjB1c2VyLXJlYWQtcmVjZW50bHktcGxheWVkJTIwdXNlci1mb2xsb3ctcmVhZCUyMHVzZXItZm9sbG93LW1vZGlmeSUyMHVzZXItdG9wLXJlYWQlMjBwbGF5bGlzdC1tb2RpZnktcHVibGljJTIwcGxheWxpc3QtcmVhZC1wcml2YXRlJTIwcGxheWxpc3QtbW9kaWZ5LXByaXZhdGUmc3RhdGU9ZXlKa1lreHBibXRKWkNJNklqWTRZVGhqTlRobE5EQXdNREF3TUdNd01Ea3pOakpoT0NJc0ltRmpkR2x2YmxSNWNHVWlPbTUxYkd3c0ltTjBZU0k2SWxCeVpTMVRZWFpsSWl3aWRYTmxja052ZFc1MGNta2lPaUpWVXlJc0luTm9iM0owU1dRaU9pSnRiMjluY0d4aGVTSXNJbVJ2YldGcGJpSTZJbWgwZEhCek9pOHZiWFZ6YVdNdVpXMXdhUzV5WlNJc0luTmxjblpwWTJWT1lXMWxJam9pYzNCdmRHbG1lU0lzSW5CeWIyUjFZM1FpT2lKemJXRnlkR3hwYm1zaUxDSnlaV1JwY21WamRGVnlhU0k2SW1oMGRIQnpPaTh2YlhWemFXTXVaVzF3YVM1eVpTOXRiMjluY0d4aGVTOXdjbVZ6WVhabFkyRnNiR0poWTJzaUxDSm1ZV3hzWW1GamExVnliQ0k2Ym5Wc2JDd2lhWE5RY21WU1pXeGxZWE5sSWpwMGNuVmxMQ0pwYzBaMWRIVnlaVkpsYkdWaGMyVWlPblJ5ZFdVc0ltRnlkR2x6ZEVsa0lqb2lOamhoT0dNMU56RXlOekF3TURBek1UQXdNMlF3TW1GbUlpd2lZWEowYVhOMFQzZHVaWElpT2lJMVpEVmtOemxoWVRNMU1EQXdNRGxpTVdFNU1UZzBORE1pTENKaFkzUnBiMjVKWkNJNmJuVnNiQ3dpWjJSd2NrVnVabTl5WTJVaU9tWmhiSE5sTENKc2FXNXJWSGx3WlNJNmJuVnNiQ3dpZFhObGNrbFFJam9pTVRjeUxqRTBMakU0Tmk0eU5EUWlMQ0p5WlhkaGNtUlZjMlZ5U1dRaU9tNTFiR3dzSW5KbFptVnljbUZzU1dRaU9tNTFiR3dzSW5WMWFXUWlPaUk1T0dFeU5URXdOaTAwT1RBMExUUmhabU10T1dObE1TMDVPVE16TWpRNE5XSTNObVlpZlE9PSIsInNydmMiOiJzcG90aWZ5IiwicHJvZHVjdCI6InNtYXJ0bGluayIsInNob3J0SWQiOiJtb29ncGxheSIsImlzQXV0aG9yaXphdGlvblJlcXVpcmVkIjp0cnVlLCJvd25lciI6IjVkNWQ3OWFhMzUwMDAwOWIxYTkxODQ0MyIsInRlbmFudCI6IjVmMTgwMzUwN2I3ODU5OWQ1ZjIyZTY2YiIsImFyIjoiNjhhOGM1NzEyNzAwMDAzMTAwM2QwMmFmIiwiaXNTaG9ydExpbmsiOmZhbHNlLCJuYXRpdmUiOmZhbHNlfQ" target="_blank" rel="noopener noreferrer" class="stream-btn primary" style="background: #1DB954;">
                                         <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
                                         </svg>
-                                        Pre-Save Coming Soon
-                                    </div>
+                                        Pre-Save on Spotify
+                                    </a>
+                                    <a href="https://api.ffm.to/sl/e/ps/moogplay?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMzguMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxMzguMC4wLjAiLCJtYWpvciI6IjEzOCJ9LCJjcHUiOnt9LCJkZXZpY2UiOnsibW9kZWwiOiJNYWNpbnRvc2giLCJ2ZW5kb3IiOiJBcHBsZSJ9LCJlbmdpbmUiOnsibmFtZSI6IkJsaW5rIiwidmVyc2lvbiI6IjEzOC4wLjAuMCJ9LCJvcyI6eyJuYW1lIjoibWFjT1MiLCJ2ZXJzaW9uIjoiMTAuMTUuNyJ9fSwiY2xpZW50Ijp7InJpZCI6IjMwZmUzZWNkLTYzZjMtNDM4NC1iNmFhLWI0ODFiOTg4NjJkOSIsInNpZCI6ImY2NTgwNzdmLWM4OWEtNGNjYy04M2IwLTE2ZWQ3Mjc0ZWJiNyIsImlwIjoiMTcyLjE0LjE4Ni4yNDQiLCJyZWYiOiJodHRwczovL2xpbmt0ci5lZS8iLCJob3N0IjoibXVzaWMuZW1waS5yZSIsImxhbmciOiJlbi1VUyIsImlwQ291bnRyeSI6IlVTIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IlVTIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiI5OGEyNTEwNi00OTA0LTRhZmMtOWNlMS05OTMzMjQ4NWI3NmYiLCJpZCI6IjY4YThjNThlNDAwMDAwMGMwMDkzNjJhOCIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FwaS5mZm0udG8vd2ViaG9vay9hcHBsZS9hdXRob3JpemU_c3RhdGU9ZXlKa1lreHBibXRKWkNJNklqWTRZVGhqTlRobE5EQXdNREF3TUdNd01Ea3pOakpoT0NJc0ltRmpkR2x2YmxSNWNHVWlPbTUxYkd3c0ltTjBZU0k2SWxCeVpTMUJaR1FpTENKMWMyVnlRMjkxYm5SeWVTSTZJbFZUSWl3aWMyaHZjblJKWkNJNkltMXZiMmR3YkdGNUlpd2laRzl0WVdsdUlqb2lhSFIwY0hNNkx5OXRkWE5wWXk1bGJYQnBMbkpsSWl3aWMyVnlkbWxqWlU1aGJXVWlPaUpoY0hCc1pTSXNJbkJ5YjJSMVkzUWlPaUp6YldGeWRHeHBibXNpTENKeVpXUnBjbVZqZEZWeWFTSTZJbWgwZEhCek9pOHZiWFZ6YVdNdVpXMXdhUzV5WlM5dGIyOW5jR3hoZVM5d2NtVnpZWFpsWTJGc2JHSmhZMnNpTENKbVlXeHNZbUZqYTFWeWJDSTZiblZzYkN3aWFYTlFjbVZTWld4bFlYTmxJanAwY25WbExDSnBjMFoxZEhWeVpWSmxiR1ZoYzJVaU9uUnlkV1VzSW1GeWRHbHpkRWxrSWpvaU5qaGhPR00xTnpFeU56QXdNREF6TVRBd00yUXdNbUZtSWl3aVlYSjBhWE4wVDNkdVpYSWlPaUkxWkRWa056bGhZVE0xTURBd01EbGlNV0U1TVRnME5ETWlMQ0poWTNScGIyNUpaQ0k2Ym5Wc2JDd2laMlJ3Y2tWdVptOXlZMlVpT21aaGJITmxMQ0pzYVc1clZIbHdaU0k2Ym5Wc2JDd2lkWE5sY2tsUUlqb2lNVGN5TGpFMExqRTROaTR5TkRRaUxDSnlaWGRoY21SVmMyVnlTV1FpT201MWJHd3NJbkpsWm1WeWNtRnNTV1FpT201MWJHd3NJblYxYVdRaU9pSTVPR0V5TlRFd05pMDBPVEEwTFRSaFptTXRPV05sTVMwNU9UTXpNalE0TldJM05tWWlmUT09Iiwic3J2YyI6ImFwcGxlIiwicHJvZHVjdCI6InNtYXJ0bGluayIsInNob3J0SWQiOiJtb29ncGxheSIsImlzQXV0aG9yaXphdGlvblJlcXVpcmVkIjp0cnVlLCJvd25lciI6IjVkNWQ3OWFhMzUwMDAwOWIxYTkxODQ0MyIsInRlbmFudCI6IjVmMTgwMzUwN2I3ODU5OWQ1ZjIyZTY2YiIsImFyIjoiNjhhOGM1NzEyNzAwMDAzMTAwM2QwMmFmIiwiaXNTaG9ydExpbmsiOmZhbHNlLCJuYXRpdmUiOmZhbHNlfQ" target="_blank" rel="noopener noreferrer" class="stream-btn" style="background: #000000;">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                        Pre-Add on Apple Music
+                                    </a>
+                                    <a href="https://api.ffm.to/sl/e/ps/moogplay?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMzguMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxMzguMC4wLjAiLCJtYWpvciI6IjEzOCJ9LCJjcHUiOnt9LCJkZXZpY2UiOnsibW9kZWwiOiJNYWNpbnRvc2giLCJ2ZW5kb3IiOiJBcHBsZSJ9LCJlbmdpbmUiOnsibmFtZSI6IkJsaW5rIiwidmVyc2lvbiI6IjEzOC4wLjAuMCJ9LCJvcyI6eyJuYW1lIjoibWFjT1MiLCJ2ZXJzaW9uIjoiMTAuMTUuNyJ9fSwiY2xpZW50Ijp7InJpZCI6IjMwZmUzZWNkLTYzZjMtNDM4NC1iNmFhLWI0ODFiOTg4NjJkOSIsInNpZCI6ImY2NTgwNzdmLWM4OWEtNGNjYy04M2IwLTE2ZWQ3Mjc0ZWJiNyIsImlwIjoiMTcyLjE0LjE4Ni4yNDQiLCJyZWYiOiJodHRwczovL2xpbmt0ci5lZS8iLCJob3N0IjoibXVzaWMuZW1waS5yZSIsImxhbmciOiJlbi1VUyIsImlwQ291bnRyeSI6IlVTIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IlVTIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiI5OGEyNTEwNi00OTA0LTRhZmMtOWNlMS05OTMzMjQ4NWI3NmYiLCJpZCI6IjY4YThjNThlNDAwMDAwMGMwMDkzNjJhOCIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL3d3dy5hbWF6b24uY29tL2FwL29hP2NsaWVudF9pZD1hbXpuMS5hcHBsaWNhdGlvbi1vYTItY2xpZW50LmZlNDc1ODI5YzBkMDQ5MzViMmM5NGRjZGFhZTRkOTY3JnNjb3BlPXByb2ZpbGUmcmVzcG9uc2VfdHlwZT1jb2RlJnN0YXRlPWV5SmtZa3hwYm10SlpDSTZJalk0WVRoak5UaGxOREF3TURBd01HTXdNRGt6TmpKaE9DSXNJbUZqZEdsdmJsUjVjR1VpT201MWJHd3NJbU4wWVNJNklsQnlaUzFUWVhabElpd2lkWE5sY2tOdmRXNTBjbmtpT2lKVlV5SXNJbk5vYjNKMFNXUWlPaUp0YjI5bmNHeGhlU0lzSW1SdmJXRnBiaUk2SW1oMGRIQnpPaTh2YlhWemFXTXVaVzF3YVM1eVpTSXNJbk5sY25acFkyVk9ZVzFsSWpvaVlXMWhlbTl1SWl3aWNISnZaSFZqZENJNkluTnRZWEowYkdsdWF5SXNJbkpsWkdseVpXTjBWWEpwSWpvaWFIUjBjSE02THk5dGRYTnBZeTVsYlhCcExuSmxMMjF2YjJkd2JHRjVMM0J5WlhOaGRtVmpZV3hzWW1GamF5SXNJbVpoYkd4aVlXTnJWWEpzSWpwdWRXeHNMQ0pwYzFCeVpWSmxiR1ZoYzJVaU9uUnlkV1VzSW1selJuVjBkWEpsVW1Wc1pXRnpaU0k2ZEhKMVpTd2lZWEowYVhOMFNXUWlPaUkyT0dFNFl6VTNNVEkzTURBd01ETXhNREF6WkRBeVlXWWlMQ0poY25ScGMzUlBkMjVsY2lJNklqVmtOV1EzT1dGaE16VXdNREF3T1dJeFlUa3hPRFEwTXlJc0ltRmpkR2x2Ymtsa0lqcHVkV3hzTENKblpIQnlSVzVtYjNKalpTSTZabUZzYzJVc0lteHBibXRVZVhCbElqcHVkV3hzTENKMWMyVnlTVkFpT2lJeE56SXVNVFF1TVRnMkxqSTBOQ0lzSW5KbGQyRnlaRlZ6WlhKSlpDSTZiblZzYkN3aWNtVm1aWEp5WVd4SlpDSTZiblZzYkN3aWRYVnBaQ0k2SWprNFlUSTFNVEEyTFRRNU1EUXROR0ZtWXkwNVkyVXhMVGs1TXpNeU5EZzFZamMyWmlKOSZyZWRpcmVjdF91cmk9aHR0cHM6Ly9hcGkuZmZtLnRvL3dlYmhvb2svYW1hem9ubXVzaWMvYXV0aG9yaXplIiwic3J2YyI6ImFtYXpvbiIsInByb2R1Y3QiOiJzbWFydGxpbmsiLCJzaG9ydElkIjoibW9vZ3BsYXkiLCJpc0F1dGhvcml6YXRpb25SZXF1aXJlZCI6dHJ1ZSwib3duZXIiOiI1ZDVkNzlhYTM1MDAwMDliMWE5MTg0NDMiLCJ0ZW5hbnQiOiI1ZjE4MDM1MDdiNzg1OTlkNWYyMmU2NmIiLCJhciI6IjY4YThjNTcxMjcwMDAwMzEwMDNkMDJhZiIsImlzU2hvcnRMaW5rIjpmYWxzZSwibmF0aXZlIjpmYWxzZX0" target="_blank" rel="noopener noreferrer" class="stream-btn" style="background: #FF9900;">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M2.98 0L23.02 0C23.562 0 24 0.438 24 0.98V23.02C24 23.562 23.562 24 23.02 24H2.98C2.438 24 2 23.562 2 23.02V0.98C2 0.438 2.438 0 2.98 0ZM11.637 16.362C11.834 16.362 12.011 16.247 12.097 16.069L14.436 10.772C14.46 10.715 14.471 10.653 14.471 10.59C14.471 10.264 14.207 10 13.881 10C13.684 10 13.507 10.115 13.421 10.293L11.637 14.478L9.853 10.293C9.767 10.115 9.59 10 9.393 10C9.067 10 8.803 10.264 8.803 10.59C8.803 10.653 8.814 10.715 8.838 10.772L11.177 16.069C11.263 16.247 11.44 16.362 11.637 16.362ZM3.98 7C3.98 6.177 4.657 5.5 5.48 5.5H6.52C7.343 5.5 8.02 6.177 8.02 7V17C8.02 17.823 7.343 18.5 6.52 18.5H5.48C4.657 18.5 3.98 17.823 3.98 17V7Z"/>
+                                        </svg>
+                                        Pre-Save on Amazon Music
+                                    </a>
+                                    <a href="https://api.ffm.to/sl/e/ps/moogplay?cd=eyJ1YSI6eyJ1YSI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMzguMC4wLjAgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXIiOnsibmFtZSI6IkNocm9tZSIsInZlcnNpb24iOiIxMzguMC4wLjAiLCJtYWpvciI6IjEzOCJ9LCJjcHUiOnt9LCJkZXZpY2UiOnsibW9kZWwiOiJNYWNpbnRvc2giLCJ2ZW5kb3IiOiJBcHBsZSJ9LCJlbmdpbmUiOnsibmFtZSI6IkJsaW5rIiwidmVyc2lvbiI6IjEzOC4wLjAuMCJ9LCJvcyI6eyJuYW1lIjoibWFjT1MiLCJ2ZXJzaW9uIjoiMTAuMTUuNyJ9fSwiY2xpZW50Ijp7InJpZCI6IjMwZmUzZWNkLTYzZjMtNDM4NC1iNmFhLWI0ODFiOTg4NjJkOSIsInNpZCI6ImY2NTgwNzdmLWM4OWEtNGNjYy04M2IwLTE2ZWQ3Mjc0ZWJiNyIsImlwIjoiMTcyLjE0LjE4Ni4yNDQiLCJyZWYiOiJodHRwczovL2xpbmt0ci5lZS8iLCJob3N0IjoibXVzaWMuZW1waS5yZSIsImxhbmciOiJlbi1VUyIsImlwQ291bnRyeSI6IlVTIn0sImlzV2VicFN1cHBvcnRlZCI6dHJ1ZSwiZ2RwckVuZm9yY2UiOmZhbHNlLCJjb3VudHJ5Q29kZSI6IlVTIiwiaXNCb3QiOmZhbHNlLCJ1c2VBZmYiOiJvcmlnaW4iLCJ2aWQiOiI5OGEyNTEwNi00OTA0LTRhZmMtOWNlMS05OTMzMjQ4NWI3NmYiLCJpZCI6IjY4YThjNThlNDAwMDAwMGMwMDkzNjJhOCIsInBydiI6ZmFsc2UsImlzUHJlUiI6dHJ1ZSwidHpvIjpudWxsLCJjaCI6bnVsbCwiYW4iOm51bGwsImRlc3RVcmwiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdjIvYXV0aD9hY2Nlc3NfdHlwZT1vZmZsaW5lJmluY2x1ZGVfZ3JhbnRlZF9zY29wZXM9dHJ1ZSZzdGF0ZT1leUprWWt4cGJtdEpaQ0k2SWpZNFlUaGpOVGhsTkRBd01EQXdNR013TURrek5qSmhPQ0lzSW1GamRHbHZibFI1Y0dVaU9tNTFiR3dzSW1OMFlTSTZJbEJ5WlMxVFlYWmxJaXdpZFhObGNrTnZkVzUwY25raU9pSlZVeUlzSW5Ob2IzSjBTV1FpT2lKdGIyOW5jR3hoZVNJc0ltUnZiV0ZwYmlJNkltaDBkSEJ6T2k4dmJYVnphV011Wlcxd2FTNXlaU0lzSW5ObGNuWnBZMlZPWVcxbElqb2llVzkxZEhWaVpXMTFjMmxqSWl3aWNISnZaSFZqZENJNkluTnRZWEowYkdsdWF5SXNJbkpsWkdseVpXTjBWWEpwSWpvaWFIUjBjSE02THk5dGRYTnBZeTVsYlhCcExuSmxMMjF2YjJkd2JHRjVMM0J5WlhOaGRtVmpZV3hzWW1GamF5SXNJbVpoYkd4aVlXTnJWWEpzSWpwdWRXeHNMQ0pwYzFCeVpWSmxiR1ZoYzJVaU9uUnlkV1VzSW1selJuVjBkWEpsVW1Wc1pXRnpaU0k2ZEhKMVpTd2lZWEowYVhOMFNXUWlPaUkyT0dFNFl6VTNNVEkzTURBd01ETXhNREF6WkRBeVlXWWlMQ0poY25ScGMzUlBkMjVsY2lJNklqVmtOV1EzT1dGaE16VXdNREF3T1dJeFlUa3hPRFEwTXlJc0ltRmpkR2x2Ymtsa0lqcHVkV3hzTENKblpIQnlSVzVtYjNKalpTSTZabUZzYzJVc0lteHBibXRVZVhCbElqcHVkV3hzTENKMWMyVnlTVkFpT2lJeE56SXVNVFF1TVRnMkxqSTBOQ0lzSW5KbGQyRnlaRlZ6WlhKSlpDSTZiblZzYkN3aWNtVm1aWEp5WVd4SlpDSTZiblZzYkN3aWRYVnBaQ0k2SWprNFlUSTFNVEEyTFRRNU1EUXROR0ZtWXkwNVkyVXhMVGs1TXpNeU5EZzFZamMyWmlKOSZyZXNwb25zZV90eXBlPWNvZGUmY29uc2VudD1QbGVhc2UlMjBhbGxvdyZwcm9tcHQ9Y29uc2VudCZzY29wZT1odHRwcyUzQSUyRiUyRnd3dy5nb29nbGVhcGlzLmNvbSUyRmF1dGglMkZ5b3V0dWJlJTIwaHR0cHMlM0ElMkYlMkZ3d3cuZ29vZ2xlYXBpcy5jb20lMkZhdXRoJTJGdXNlcmluZm8ucHJvZmlsZSUyMGh0dHBzJTNBJTJGJTJGd3d3Lmdvb2dsZWFwaXMuY29tJTJGYXV0aCUyRnVzZXJpbmZvLmVtYWlsJTIwaHR0cHMlM0ElMkYlMkZ3d3cuZ29vZ2xlYXBpcy5jb20lMkZhdXRoJTJGbXVzaWMmY2xpZW50X2lkPTc2NzgyNzkyMzAyNy1oZ2tqYWZqYmppMTJ1cnV2bGk1dDlxbG1kYXRrcHYyMi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSZyZWRpcmVjdF91cmk9aHR0cHMlM0ElMkYlMkZhcGkuZmZtLnRvJTJGd2ViaG9vayUyRnlvdXR1YmUlMkZhdXRob3JpemUiLCJzcnZjIjoieW91dHViZW11c2ljIiwicHJvZHVjdCI6InNtYXJ0bGluayIsInNob3J0SWQiOiJtb29ncGxheSIsImlzQXV0aG9yaXphdGlvblJlcXVpcmVkIjp0cnVlLCJvd25lciI6IjVkNWQ3OWFhMzUwMDAwOWIxYTkxODQ0MyIsInRlbmFudCI6IjVmMTgwMzUwN2I3ODU5OWQ1ZjIyZTY2YiIsImFyIjoiNjhhOGM1NzEyNzAwMDAzMTAwM2QwMmFmIiwiaXNTaG9ydExpbmsiOmZhbHNlLCJuYXRpdmUiOmZhbHNlfQ" target="_blank" rel="noopener noreferrer" class="stream-btn" style="background: #FF0000;">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                        Pre-Save on YouTube Music
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Falling Single -->
-                    <div class="release-card">
+                    <div class="release-card" data-track-id="falling" data-audio-src="/audio/falling-preview.mp3">
                         <div class="release-header">
                             <div class="release-artwork">
                                 <img src="/images/falling_album.jpeg" alt="Falling by Mood" style="width: 100%; height: 100%; object-fit: cover;">
@@ -305,12 +472,12 @@
                                     in life's quiet moments.
                                 </p>
                                 <div class="streaming-links">
-                                    <a href="#" class="stream-btn primary">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <button class="stream-btn primary play-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="play-icon">
                                             <path d="M8 5v14l11-7z"/>
                                         </svg>
-                                        Play Preview
-                                    </a>
+                                        <span class="btn-text">Play Preview</span>
+                                    </button>
                                     <a href="#" class="stream-btn">
                                         <svg viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>

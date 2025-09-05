@@ -3,9 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - A Moody Place</title>
+    <title>Contact Mood - Get in Touch | A Moody Place</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Contact indie artist Mood for collaborations, bookings, press inquiries, and fan messages. Connect with A Moody Place for music industry opportunities and partnerships.">
+    <meta name="keywords" content="contact Mood, indie artist contact, music collaboration, booking inquiries, press contact, A Moody Place contact form, artist management">
+    <meta name="author" content="Mood">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://a-moody-place.com/contact">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a-moody-place.com/contact">
+    <meta property="og:title" content="Contact Mood - Get in Touch | A Moody Place">
+    <meta property="og:description" content="Reach out to indie artist Mood for collaborations, bookings, press inquiries, and more. Let's connect and create something meaningful together.">
+    <meta property="og:image" content="https://a-moody-place.com/images/og-contact.jpg">
+    <meta property="og:site_name" content="A Moody Place">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@amoodyplace">
+    <meta name="twitter:title" content="Contact Mood - Get in Touch">
+    <meta name="twitter:description" content="Connect with indie artist Mood for collaborations, bookings, and more.">
+    <meta name="twitter:image" content="https://a-moody-place.com/images/og-contact.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "@id": "https://a-moody-place.com/contact",
+      "name": "Contact A Moody Place",
+      "description": "Get in touch with indie artist Mood for collaborations, bookings, and inquiries",
+      "url": "https://a-moody-place.com/contact",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "A Moody Place",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://a-moody-place.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact",
+            "item": "https://a-moody-place.com/contact"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'page_title': 'Contact - A Moody Place',
+        'content_group1': 'Contact'
+      });
+      
+      // Track contact form interactions
+      gtag('event', 'page_view', {
+        'page_title': 'Contact - A Moody Place',
+        'content_group1': 'Contact'
+      });
+    </script>
+    
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script defer src="/js/contact-form.js"></script>
     <style>
         /* Contact Page Styles */
         .contact-hero {
@@ -298,35 +379,14 @@
                                 Send a Message
                             </h2>
                             
-                            <form x-data="{ 
-                                name: '', 
-                                email: '', 
-                                subject: '', 
-                                message: '', 
-                                loading: false,
-                                sent: false,
-                                error: ''
-                            }" 
-                            @submit.prevent="
-                                loading = true;
-                                error = '';
-                                // Simulate form submission
-                                setTimeout(() => {
-                                    loading = false;
-                                    sent = true;
-                                    name = '';
-                                    email = '';
-                                    subject = '';
-                                    message = '';
-                                }, 1500);
-                            ">
+                            <form id="contact-form" method="POST">
                                 <div class="grid grid-cols-1" style="gap: var(--spacing-lg);">
                                     <div class="grid grid-cols-1" style="gap: var(--spacing-lg);">
                                         <div class="form-group">
                                             <label class="form-label" for="name">Name *</label>
                                             <input type="text" 
                                                    id="name" 
-                                                   x-model="name" 
+                                                   name="name"
                                                    class="form-input" 
                                                    placeholder="Your full name" 
                                                    required>
@@ -336,7 +396,7 @@
                                             <label class="form-label" for="email">Email *</label>
                                             <input type="email" 
                                                    id="email" 
-                                                   x-model="email" 
+                                                   name="email"
                                                    class="form-input" 
                                                    placeholder="your@email.com" 
                                                    required>
@@ -345,7 +405,7 @@
                                     
                                     <div class="form-group">
                                         <label class="form-label" for="subject">Subject *</label>
-                                        <select id="subject" x-model="subject" class="form-select" required>
+                                        <select id="subject" name="subject" class="form-select" required>
                                             <option value="">Choose a topic...</option>
                                             <option value="collaboration">Collaboration Opportunity</option>
                                             <option value="booking">Booking Inquiry</option>
@@ -359,7 +419,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="message">Message *</label>
                                         <textarea id="message" 
-                                                  x-model="message" 
+                                                  name="message"
                                                   class="form-textarea" 
                                                   placeholder="Tell me about your project, idea, or just say hello..."
                                                   required
@@ -367,18 +427,9 @@
                                     </div>
                                     
                                     <div class="text-center">
-                                        <button type="submit" 
-                                                class="btn btn-primary btn-lg" 
-                                                :disabled="loading"
-                                                x-show="!sent">
-                                            <span x-show="!loading">Send Message</span>
-                                            <span x-show="loading">Sending...</span>
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            Send Message
                                         </button>
-                                        
-                                        <div x-show="sent" class="card" style="background-color: var(--color-success); color: white; padding: var(--spacing-lg); margin-top: var(--spacing-md);">
-                                            <h3 style="margin-bottom: var(--spacing-sm);">Message Sent!</h3>
-                                            <p style="margin: 0;">Thank you for reaching out. I'll get back to you as soon as possible.</p>
-                                        </div>
                                     </div>
                                 </div>
                             </form>

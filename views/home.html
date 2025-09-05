@@ -3,9 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Moody Place</title>
+    <title>A Moody Place - Official Website of Artist Mood | Introspective Indie Music</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Official website of artist Mood - songwriter, artist, and topliner creating introspective indie music exploring human emotion and authentic connection. Listen to 'Falling' and upcoming 'Moog Play'.">
+    <meta name="keywords" content="Mood, A Moody Place, artist, songwriter, topliner, indie music, introspective music, emotional music, Falling, Moog Play, Los Angeles musician, alternative indie">
+    <meta name="author" content="Mood">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="canonical" href="https://a-moody-place.com/">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/main.css" as="style">
+    <link rel="preload" href="/js/music-player.js" as="script">
+    <link rel="preload" href="/images/falling_632x632.webp" as="image" data-critical="true">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" as="style">
+    
+    <!-- Critical CSS -->
     <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Web fonts with display swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon and icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a-moody-place.com/">
+    <meta property="og:title" content="A Moody Place - Official Website of Artist Mood">
+    <meta property="og:description" content="Introspective indie music exploring human emotion and authentic connection. Listen to debut single 'Falling' and upcoming 'Moog Play' by artist Mood.">
+    <meta property="og:image" content="https://a-moody-place.com/images/og-home.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A Moody Place - Artist Mood">
+    <meta property="og:site_name" content="A Moody Place">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@amoodyplace">
+    <meta name="twitter:creator" content="@amoodyplace">
+    <meta name="twitter:url" content="https://a-moody-place.com/">
+    <meta name="twitter:title" content="A Moody Place - Official Website of Artist Mood">
+    <meta name="twitter:description" content="Introspective indie music exploring human emotion and authentic connection. Listen to debut single 'Falling' and upcoming 'Moog Play'.">
+    <meta name="twitter:image" content="https://a-moody-place.com/images/og-home.jpg">
+    <meta name="twitter:image:alt" content="A Moody Place - Artist Mood">
+    
+    <!-- Additional Social Meta -->
+    <meta property="music:musician" content="Mood">
+    <meta property="music:song" content="Falling">
+    <meta property="music:song" content="Moog Play">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Mood",
+      "alternateName": "A Moody Place",
+      "description": "Introspective indie music exploring the depths of human emotion and authentic connection",
+      "url": "https://a-moody-place.com",
+      "sameAs": [
+        "https://instagram.com/amoodyplace",
+        "https://tiktok.com/@amoodyplace",
+        "https://youtube.com/@amoodyplace"
+      ],
+      "genre": ["Indie", "Alternative", "Introspective"],
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Los Angeles, CA"
+      },
+      "album": [
+        {
+          "@type": "MusicAlbum",
+          "name": "Falling",
+          "albumProductionType": "http://schema.org/StudioAlbum",
+          "albumReleaseType": "http://schema.org/SingleRelease",
+          "datePublished": "2025-06-13",
+          "byArtist": {
+            "@type": "MusicGroup",
+            "name": "Mood"
+          },
+          "track": {
+            "@type": "MusicRecording",
+            "name": "Falling",
+            "duration": "PT3M45S",
+            "inAlbum": "Falling",
+            "byArtist": {
+              "@type": "MusicGroup",
+              "name": "Mood"
+            }
+          }
+        },
+        {
+          "@type": "MusicAlbum",
+          "name": "Moog Play",
+          "albumProductionType": "http://schema.org/StudioAlbum",
+          "albumReleaseType": "http://schema.org/SingleRelease",
+          "datePublished": "2025-09-12",
+          "byArtist": {
+            "@type": "MusicGroup",
+            "name": "Mood"
+          }
+        }
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://a-moody-place.com/"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'page_title': 'Home - A Moody Place',
+        'page_location': window.location.href,
+        'content_group1': 'Home'
+      });
+      
+      // Custom events for music interactions
+      gtag('event', 'page_view', {
+        'page_title': 'Home - A Moody Place',
+        'page_location': window.location.href
+      });
+    </script>
+    
+    <!-- Defer non-critical JavaScript -->
+    <script defer src="/js/music-player.js"></script>
+    <script defer src="/js/contact-form.js"></script>
+    <script defer src="/js/lazy-loading.js"></script>
+    <script defer src="/js/performance-monitor.js"></script>
+    <script defer src="/js/analytics.js"></script>
     <style>
         /* Minimal Elegant Styles */
         .hero {
@@ -13,7 +158,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('/images/falling_album.jpeg');
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('/images/falling_632x632.webp');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -129,6 +274,47 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
         
+        .play-overlay.loading {
+            animation: pulse 1s infinite;
+        }
+        
+        .play-overlay.playing {
+            background: rgba(34, 139, 34, 0.9);
+        }
+        
+        .play-overlay.error {
+            background: rgba(220, 53, 69, 0.9);
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: #2c3e50;
+            transition: width 0.1s ease;
+        }
+        
+        .time-display {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+        
         .track-info h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -231,10 +417,12 @@
         <section class="music-section" id="music">
             <div class="music-container">
                 <h2 class="music-title">Now Playing</h2>
-                <div class="track-card">
+                <div class="track-card" data-track-id="falling" data-audio-src="/audio/falling-preview.mp3">
                     <div class="track-artwork">
                         <img src="/images/falling_632x632.webp" alt="Falling">
-                        <div class="play-overlay">▶</div>
+                        <div class="play-overlay">
+                            <span class="play-icon">▶</span>
+                        </div>
                     </div>
                     <div class="track-info">
                         <h3>Falling</h3>
@@ -246,6 +434,10 @@
                             This introspective track showcases Mood's signature sound of emotional depth 
                             combined with sophisticated production.
                         </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill"></div>
+                        </div>
+                        <div class="time-display"></div>
                     </div>
                     <div class="streaming-links">
                         <a href="#" class="stream-btn">
@@ -262,6 +454,34 @@
             </div>
         </section>
 
+        <!-- Newsletter Signup Section -->
+        <section style="background: #2c3e50; padding: 3rem 0; color: white;">
+            <div class="music-container" style="text-align: center;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem;">
+                    Stay Connected
+                </h2>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    Be the first to know about new releases, upcoming shows, and behind-the-scenes updates.
+                </p>
+                
+                <form class="newsletter-form" style="display: flex; max-width: 400px; margin: 0 auto; gap: 1rem;">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Enter your email" 
+                        required
+                        style="flex: 1; padding: 0.8rem 1rem; border: none; border-radius: 4px; font-size: 0.95rem;"
+                    >
+                    <button 
+                        type="submit"
+                        style="padding: 0.8rem 1.5rem; background: white; color: #2c3e50; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; white-space: nowrap;"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+
         <!-- Footer -->
         <section class="footer">
             <div class="container">
@@ -269,5 +489,56 @@
             </div>
         </section>
     </main>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker for caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered successfully:', registration.scope);
+                    
+                    // Check for updates
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log('New content available, please refresh.');
+                                // Optional: Show update notification to user
+                            }
+                        });
+                    });
+                })
+                .catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+
+        // Performance mark for page load completion
+        window.addEventListener('load', function() {
+            performance.mark('page-load-complete');
+            
+            // Measure Core Web Vitals
+            if (window.performanceMonitor) {
+                setTimeout(() => {
+                    const metrics = window.performanceMonitor.getMetrics();
+                    console.log('Current performance metrics:', metrics);
+                }, 1000);
+            }
+        });
+
+        // Prefetch next likely pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const prefetchPages = ['/music', '/about', '/contact'];
+            prefetchPages.forEach(page => {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = page;
+                document.head.appendChild(link);
+            });
+        });
+    </script>
 </body>
 </html>

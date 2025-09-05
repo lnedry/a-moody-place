@@ -27,7 +27,7 @@ A comprehensive artist website and music platform built with Node.js, Express, M
 
 ## 🛠 Technology Stack
 
-- **Backend**: Node.js 18+, Express.js
+- **Backend**: Node.js 22+, Express.js
 - **Database**: MariaDB 10.11+ with connection pooling
 - **Frontend**: Alpine.js for progressive enhancement
 - **Security**: JWT, bcrypt, helmet, rate limiting
@@ -37,7 +37,7 @@ A comprehensive artist website and music platform built with Node.js, Express, M
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18.0.0 or higher
+- Node.js 22.0.0 or higher
 - MariaDB 10.11 or higher
 - Nginx (for production)
 - SSL certificate (Let's Encrypt recommended)

@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - A Moody Place</title>
+    <title>Photo Gallery - Visual Journey | A Moody Place</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore the visual world of indie artist Mood through curated photo galleries featuring behind-the-scenes moments, creative sessions, and artistic portraits from A Moody Place.">
+    <meta name="keywords" content="Mood photo gallery, indie artist photos, behind the scenes, creative sessions, artist portraits, A Moody Place gallery, music photography">
+    <meta name="author" content="Mood">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://a-moody-place.com/gallery">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a-moody-place.com/gallery">
+    <meta property="og:title" content="Photo Gallery - Visual Journey | A Moody Place">
+    <meta property="og:description" content="Explore the visual world of indie artist Mood through curated photo galleries and behind-the-scenes moments.">
+    <meta property="og:image" content="https://a-moody-place.com/images/og-gallery.jpg">
+    <meta property="og:site_name" content="A Moody Place">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@amoodyplace">
+    <meta name="twitter:title" content="Photo Gallery - Visual Journey">
+    <meta name="twitter:description" content="Visual moments from indie artist Mood's creative journey.">
+    <meta name="twitter:image" content="https://a-moody-place.com/images/og-gallery.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "@id": "https://a-moody-place.com/gallery",
+      "name": "A Moody Place Photo Gallery",
+      "description": "Visual journey through the creative world of indie artist Mood",
+      "url": "https://a-moody-place.com/gallery",
+      "author": {
+        "@type": "Person",
+        "name": "Mood",
+        "url": "https://a-moody-place.com/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "A Moody Place",
+        "url": "https://a-moody-place.com"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'page_title': 'Gallery - A Moody Place',
+        'content_group1': 'Gallery'
+      });
+    </script>
+    
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script defer src="/js/gallery-lightbox.js"></script>
     <style>
         /* Gallery Page Styles */
         .gallery-hero {
@@ -293,12 +352,60 @@
                     <button class="filter-btn">Artwork</button>
                 </div>
                 
-                <!-- Currently no gallery items -->
-                <div class="no-gallery">
-                    <h3>Gallery Coming Soon</h3>
-                    <p>I'm curating a collection of visual moments from the studio, live performances, 
-                    and behind-the-scenes glimpses into the creative process. Follow along on social media 
-                    for the latest updates and sneak peeks.</p>
+                <!-- Sample gallery items for lightbox demo -->
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="/images/falling_album.jpeg" alt="Falling Album Artwork" class="gallery-image">
+                        <div class="gallery-overlay">🔍</div>
+                        <div class="gallery-info">
+                            <h3>Falling - Single Artwork</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">June 2025</span>
+                                <span class="gallery-type">Artwork</span>
+                            </div>
+                            <p class="gallery-description">
+                                The visual identity for the debut single "Falling" - capturing the essence of vulnerability and growth.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="/images/mood_the_artist.jpg" alt="Mood - The Artist" class="gallery-image">
+                        <div class="gallery-overlay">🔍</div>
+                        <div class="gallery-info">
+                            <h3>Artist Portrait</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">2025</span>
+                                <span class="gallery-type">Photography</span>
+                            </div>
+                            <p class="gallery-description">
+                                Professional portrait session capturing the introspective nature of the artistic vision.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="/images/falling_632x632.webp" alt="Falling Single Cover" class="gallery-image">
+                        <div class="gallery-overlay">🔍</div>
+                        <div class="gallery-info">
+                            <h3>Falling - Square Format</h3>
+                            <div class="gallery-meta">
+                                <span class="gallery-date">June 2025</span>
+                                <span class="gallery-type">Artwork</span>
+                            </div>
+                            <p class="gallery-description">
+                                Optimized square format of the "Falling" artwork for streaming platforms and social media.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon Section -->
+                <div class="no-gallery" style="margin-top: 3rem;">
+                    <h3>More Coming Soon</h3>
+                    <p>This gallery will continue to grow with behind-the-scenes studio moments, 
+                    live performance shots, and creative process documentation. 
+                    Follow along for the latest visual updates.</p>
                     
                     <a href="/contact#social" class="follow-btn">Follow for Updates</a>
                 </div>

@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "NODE_ENV=development nodemon server.js",
+    "build": "node scripts/build.js",
+    "optimize": "npm run build && npm run analyze",
+    "analyze": "node scripts/analyze.js",
     "docker:build": "docker build -t a-moody-place .",
     "docker:run": "docker run -p 3000:3000 a-moody-place",
     "docker:up": "docker-compose up -d",
@@ -27,14 +30,23 @@
   "dependencies": {
     "express": "^4.18.2",
     "helmet": "^7.1.0",
-    "compression": "^1.7.4"
+    "compression": "^1.7.4",
+    "mysql2": "^3.6.0",
+    "express-rate-limit": "^7.1.5",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "terser": "^5.24.0",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.31",
+    "sharp": "^0.32.6",
+    "gzip-size": "^7.0.0",
+    "chalk": "^4.1.2"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   },
   "repository": {
     "type": "git",
